@@ -1,15 +1,15 @@
-import React from "react"
-import { BrowserRouter as Router, Route, Switch} from "react-router-dom"
-
-import './App.css'
-import {ProtectedRoute} from './AuthenthicationFiles/protectedRoute'
-import DetailedForm from './pages/detailedForm'
-import ForgotPassword from './pages/forgotPassword'
-import Login from "./pages/login"
-import MainPage from './pages/mainpage'
-import NotFound from './pages/notfound'
-import Register from './pages/register'
-import SearchResults from './pages/searchResults'
+import React from "react";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import './App.css';
+import {ProtectedRoute} from './AuthenthicationFiles/protectedRoute';
+import DetailedForm from './pages/detailedForm';
+import ForgotPassword from './pages/forgotPassword';
+import Login from "./pages/login";
+import MainPage from './pages/mainpage';
+import NotFound from './pages/notfound';
+import Register from './pages/register';
+import SearchResults from './pages/searchResults';
 
 function App() {
   return (
