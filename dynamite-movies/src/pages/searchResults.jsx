@@ -1,6 +1,6 @@
 /*index.jsx*/
-import React from "react"
-import auth from '../AuthenthicationFiles/auth'
+import React from "react";
+import auth from '../AuthenthicationFiles/auth';
 
 export const SearchResults = (props) => {
     return (
@@ -8,6 +8,7 @@ export const SearchResults = (props) => {
             <h1>Search Results</h1>
             
             <button
+                type="button" class="btn btn-outline-info"
                 onClick={() => {
                     props.history.push("/Main-Page");
                 }}        
@@ -15,6 +16,7 @@ export const SearchResults = (props) => {
             </button>
 
             <button
+                type="button" class="btn btn-outline-info"
                 onClick={() => {
                     auth.logout(()=>{
                         props.history.push("/");
