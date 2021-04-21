@@ -8,11 +8,11 @@ const accountSchema = new Schema({
     City:{type: String, require :true},
     countryResidence:{type: String, require :true},
     gender:{type: String, require :true},
-    accountPicture:{type: String, require :true},
+    accountPicture:{type: String},
     /*lastMoviesSeenList:{type: [Schema.Types.ObjectId], require :true}*/
-    lastMoviesSeenList:{type: [String], require :true}
+    lastMoviesSeenList:{type: [String]}
 })
 
-module.exports = mongoose.model('dynamite-test-account', accountSchema)
+module.exports = mongoose.model('dynamite-account', accountSchema)
 
 

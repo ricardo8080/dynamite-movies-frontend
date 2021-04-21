@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const URI = ('mongodb://localhost/dynamite-test')
+const URI = ('mongodb+srv://dbDynamiteAdmin:BHN43T2PKZwpNf2p@cluster0.fjbpb.mongodb.net/dynamitemovies?retryWrites=true&w=majority')
 
 mongoose.connect(URI,{
     useNewUrlParser : true,

@@ -1,5 +1,5 @@
 const MovieCtrl = {}
-const Movie = require('../../movie/models/movie')
+const Movie = require('../models/movie')
 
 MovieCtrl.getMovieTrends = async (req,res) => {
     /**const Movies = await Movie.find()**/

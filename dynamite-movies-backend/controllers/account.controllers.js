@@ -1,5 +1,5 @@
 const AccountCtrl = {}
-const Account = require('../../account-person/models/account')
+const Account = require('../models/account')
 
 AccountCtrl.getAccounts = async (req,res) => {
     /*const Accounts = await Account.find()*/
