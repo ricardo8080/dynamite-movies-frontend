@@ -3,9 +3,20 @@ import React from "react";
 import auth from '../AuthenthicationFiles/auth';
 
 export const MainPage = (props) => {
+    console.log("a")
     return (
         <div> 
-            <h1>MainPage</h1>
+            <nav class="navbar navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" >
+                    <img src="testResources/logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                    </img>
+                    Dynamite Movies
+                    </a>
+                </div>
+            </nav>
+
+
             <button type="button" class="btn btn-outline-info" onClick={() => {
                 props.history.push("/Search-Results");
             }}
@@ -26,6 +37,7 @@ export const MainPage = (props) => {
                 }}        
             >Logout
             </button>
+
         </div>
     )
 };
