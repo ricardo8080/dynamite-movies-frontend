@@ -9,7 +9,7 @@ const movieSchema = new Schema({
     gender:{type: [String], require :true},
     ageRestriction:{type: Number},
     principalImage:{type: String, require :true},
-    listOfPïctures:{type: [String]}
+    listOfPictures:{type: [String]}
 })
 
 module.exports = mongoose.model('dynamite-movie', movieSchema)

@@ -6,7 +6,7 @@ export const ForgotPassword = (props) => {
         <div>
             <h1>Forgot Password</h1>
             <button
-                type="button" class="btn btn-outline-info"
+                type="button" className="btn btn-outline-info"
                 onClick={() => {
                     props.history.push("/");
                 }}        

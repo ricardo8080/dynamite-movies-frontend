@@ -8,7 +8,7 @@ export const SearchResults = (props) => {
             <h1>Search Results</h1>
             
             <button
-                type="button" class="btn btn-outline-info"
+                type="button" className="btn btn-outline-info"
                 onClick={() => {
                     props.history.push("/Main-Page");
                 }}        
@@ -16,7 +16,7 @@ export const SearchResults = (props) => {
             </button>
 
             <button
-                type="button" class="btn btn-outline-info"
+                type="button" className="btn btn-outline-info"
                 onClick={() => {
                     auth.logout(()=>{
                         props.history.push("/");

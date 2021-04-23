@@ -8,7 +8,7 @@ export const DetailedForm = (props) => {
             <h1>Detailed Form </h1>
             
             <button
-                type="button" class="btn btn-outline-info"
+                type="button" className="btn btn-outline-info"
                 onClick={() => {
                     props.history.push("/Main-Page");
                 }}        
@@ -16,7 +16,7 @@ export const DetailedForm = (props) => {
             </button>
             
             <button
-                type="button" class="btn btn-outline-info"
+                type="button" className="btn btn-outline-info"
                 onClick={() => {
                     auth.logout(()=>{
                         props.history.push("/");

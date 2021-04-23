@@ -10,7 +10,7 @@ export const Register = (props) => {
         <div>
             <h1>Register</h1>
             <button
-                type="button" class="btn btn-outline-info"
+                type="button" className="btn btn-outline-info"
                 onClick={() => {
                     props.history.push("/");
                 }}        
