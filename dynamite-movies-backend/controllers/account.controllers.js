@@ -18,4 +18,9 @@ AccountCtrl.changePassword = async (req, res) =>{
     //await Account.findOneAndUpdate({"name":"NodeJS"},{"name":"Node","lastName":"Nice"})
     res.json({"response":"ok2"})
 }
+AccountCtrl.changeMoviesSeen = async (req, res) =>{
+    //await Account.findOneAndUpdate({"name":"NodeJS"},{"name":"Node","lastName":"Nice"})
+    res.json({"response":"ok2"})
+}
+
 module.exports = AccountCtrl

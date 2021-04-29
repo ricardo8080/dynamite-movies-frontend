@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const URI = ('mongodb+srv://dbDynamiteAdmin:BHN43T2PKZwpNf2p@cluster0.fjbpb.mongodb.net/dynamitemovies?retryWrites=true&w=majority')
+const URI = ('mongodb+srv://dbDynamiteAdmin:IduhrUVMCPoywdxB@cluster0.cxbun.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
 
 mongoose.connect(URI,{
     useNewUrlParser : true,
