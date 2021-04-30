@@ -1,0 +1,31 @@
+.movie-card--content {
+  width: 30%;
+  max-width: 1200px;
+  min-width: 320px;
+  margin: 40px;
+  border-left: 6px solid rgba(0, 0, 0, 0.2);
+  border-right: 3px solid rgba(0, 0, 0, 1.1);
+  border-top: 3px solid rgba(0, 0, 0, 1.1);
+  border-bottom: 6px solid rgba(0, 0, 0, 0.2);
+  background-color: #3c3c3c;
+  color: #bababa;
+  flex: 1;
+}
+
+.movie-card--title {
+  color: white;
+  font-size: 25px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-size: cover;
+}
+
+.card:hover {
+  box-shadow: 10px 10px 20px 8px rgba(255, 255, 255, 0.2);
+  transition: all 0.4s linear;
+}
+
+.movie-list--card-group {
+  display: flex;
+  flex-direction: row;
+}
