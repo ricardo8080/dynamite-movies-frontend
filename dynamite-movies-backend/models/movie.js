@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const {Schema} = mongoose
+const mongoose = require('mongoose');
+const {Schema} = mongoose;
 const movieSchema = new Schema({
     nameMovie:{type: String, require :true},
     director:{type: String, require :true},
@@ -10,8 +10,8 @@ const movieSchema = new Schema({
     ageRestriction:{type: Number},
     principalImage:{type: String, require :true},
     listOfPictures:{type: [String]}
-})
+});
 
-module.exports = mongoose.model('dynamite-movie', movieSchema)
+module.exports = mongoose.model('dynamite_movie', movieSchema);
 
 
