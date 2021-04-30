@@ -4,7 +4,41 @@ const Account = require('../models/account');
 AccountCtrl.getAccounts = async (req,res) => {
     const Accounts = await Account.find();
     //console.log(Accounts);
-    //res.json(Accounts);
+    res.json(Accounts);
+};
+
+AccountCtrl.isAccountExistent = async (req,res) => {
+    const Accounts = await Account.find({ "username" : req.body.username});
+    if (Accounts.length > 0)
+    {   
+        res.json({"response":True});
+    } 
+    else {   
+        res.json({"response":False});
+    }
+};
+
+AccountCtrl.isAccountDataCorrect = async (req,res) => {
+    let Accounts = await Account.find({ "username" : req.body.username, "password": req.body.password});
+    if (Accounts.length == 0)
+    {   
+        Accounts = await Account.find({ "username" : req.body.username});
+        if(Accounts.length == 0) {
+            res.json({ "response": False,
+                       "reason" :"Wrong username"});
+        } else {
+            res.json({ "response": False,
+                       "reason" :"Wrong password"});
+        }
+    } else {
+        res.json({ "response": True });
+    }
+};
+
+AccountCtrl.getLastSeenMovies = async (req,res) => {
+    const Accounts = await Account.find({ "username" : req.body.username });
+    console.log(Accounts.lastMoviesSeenList);
+    res.json(Accounts.lastMoviesSeenList);
 };
 
 AccountCtrl.createAccount = async (req,res) => {
@@ -65,13 +99,9 @@ AccountCtrl.changeMoviesSeen = async (req, res) =>{
 };
 
 AccountCtrl.modifyAccountInformation = async (req, res) =>{
-    const newUserName = typeof req.body.newUsername === 'undefined' 
-                      ? req.body.username 
-                      : req.body.newUsername;
     await Account.findOneAndUpdate(
         { "username" : req.body.username }
-        ,{ "username": newUserName,
-           "birthday": req.body.birthday,
+        ,{ "birthday": req.body.birthday,
            "age": req.body.age,
            "city": req.body.city,
            "countryResidence": req.body.countryResidence,

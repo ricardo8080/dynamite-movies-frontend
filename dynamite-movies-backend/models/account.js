@@ -12,4 +12,4 @@ const accountSchema = new Schema({
     lastMoviesSeenList:{type: [Schema.ObjectId], require :false}
 });
 
-module.exports = mongoose.model('dynamite_account', accountSchema);
+module.exports = mongoose.model('dynamite_accounts', accountSchema);
