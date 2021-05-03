@@ -1,31 +1,33 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {ProtectedRoute} from './AuthenthicationFiles/protectedRoute';
-import DetailedForm from './pages/detailedForm';
-import ForgotPassword from './pages/forgotPassword';
-import Login from "./pages/login";
+import DetailedFormPage from './pages/detailedForm';
+import ForgotPasswordPage from './pages/forgotPassword';
+import LoginPage from "./pages/loginPage";
 import MainPage from './pages/mainpage';
-import NotFound from './pages/notfound';
-import Register from './pages/register';
-import SearchResults from './pages/searchResults';
+import NotFoundPage from './pages/notfound';
+import RegisterPage from './pages/register';
+import SearchResultsPage from './pages/searchResults';
+import {ProvideAuth,PrivateRoute,AuthButton, useAuth} from './AuthenthicationFiles/authFiles'
 
 function App() {
   return (
-      <div>
+    <ProvideAuth>
       <Router>
-        <Switch>
-            <Route exact path="/" component={Login} ></Route>
-            <Route exact path="/Register" component={Register} ></Route>
-            <Route exact path="/Forgot-Password" component={ForgotPassword} ></Route>
-            <ProtectedRoute exact path="/Main-Page" component={MainPage} ></ProtectedRoute>
-            <ProtectedRoute exact path="/Search-Results" component={SearchResults} ></ProtectedRoute>
-            <ProtectedRoute exact path="/Detailed-Form" component={DetailedForm} ></ProtectedRoute>
-            {/* PATH "*" MUST BE THE LAST ONE*/}
-            <Route exact path="*" component={NotFound} ></Route>
-        </Switch>
+        <div>
+          <Switch>
+            <Route exact path="/forgotPassword" component={ForgotPasswordPage} />
+            <Route exact path="/signup" component={RegisterPage} />
+            <Route exact path="/" component={LoginPage} />
+            <Route exact path="/signin" component={LoginPage} />
+            <Route exact path="/SearchResultsPage" component={SearchResultsPage} />
+            <Route exact path="/DetailedFormPage" component={DetailedFormPage} />
+            <Route exact path="/mainPage" component={MainPage} />
+            <Route exact path="/*"  component={NotFoundPage} />
+          </Switch>
+        </div>
       </Router>
-    </div>
+    </ProvideAuth>
   );
 }
 

@@ -1,14 +1,23 @@
 /*index.jsx*/
 import React from "react";
-import auth from "../AuthenthicationFiles/auth";
 import { BsPeopleCircle } from "react-icons/bs";
 import { BiKey } from "react-icons/bi";
+import { Link, useHistory, useLocation } from "react-router-dom";
+import { useAuth } from '../AuthenthicationFiles/authFiles'
 
-export const Login = (props) => {
-    /*
-        If Enter to Login, inmediately go out of account
-    */
-    localStorage.setItem('isAuth', false)
+export const LoginPage = () => {
+    let history = useHistory();
+    let location = useLocation();
+    let auth = useAuth();
+  
+    let { from } = location.state || { from: { pathname: "/" } };
+    let login = () => {
+      auth.signin(() => {
+        //history.replace(from);
+        //Login specifically to the mainPage instead of the page called.
+        history.replace("/mainPage");
+      });
+    };
     return (
         <div className="centerForm">
             <form className="formLogin">
@@ -35,27 +44,22 @@ export const Login = (props) => {
                         </div>
                     </div>
                     <div className="d-flex justify-content-center links">
-                        <button type="button" className="btn text-white bg-secondary" onClick={() => {
-                            auth.login(()=>{
-                                props.history.push("/Main-Page");
-                            })
-                        }}
-                        >Login</button>
+                        <button type="button" className="btn text-white bg-secondary"
+                            onClick={login}>
+                            Login
+                        </button>
                     </div>
                     <div className="margin">
                         <strong>
-                            <div className="loginLabels d-flex justify-content-center" onClick={() => {
-                                props.history.push("/Register"
-                                );
-                            }} 
-                            >Don't have an account?<a href="#" className="link-color">Sign Up</a>
+                            <div className="loginLabels d-flex justify-content-center" >Don't have an account?
+                                <Link to="/signup" className="link-color" style={{color: "black",textDecoration: 'none'}}>
+                                Sign up
+                                </Link>
                             </div>
-                            <div className="d-flex justify-content-center" onClick={() => {
-                                auth.login(()=>{
-                                    props.history.push("/Forgot-Password");
-                                })
-                            }}>
-                                <a href="#" className="link-color">Forgot your password?</a>
+                            <div className="d-flex justify-content-center" >
+                                <Link to="/forgotpassword" className="link-color" style={{color: "black",textDecoration: 'none'}}>
+                                Forgot Password
+                                </Link>
                             </div>
                         </strong>
                     </div>
@@ -66,4 +70,4 @@ export const Login = (props) => {
     );
 };
 
-export default Login;
+export default LoginPage;
