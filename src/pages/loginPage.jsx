@@ -2,18 +2,15 @@
 import React from "react";
 import { BsPeopleCircle } from "react-icons/bs";
 import { BiKey } from "react-icons/bi";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { Link , useHistory } from "react-router-dom";
 import { useAuth } from '../AuthenthicationFiles/authFiles'
 
 export const LoginPage = () => {
     let history = useHistory();
-    let location = useLocation();
     let auth = useAuth();
   
-    let { from } = location.state || { from: { pathname: "/" } };
     let login = () => {
       auth.signin(() => {
-        //history.replace(from);
         //Login specifically to the mainPage instead of the page called.
         history.replace("/mainPage");
       });
@@ -52,12 +49,12 @@ export const LoginPage = () => {
                     <div className="margin">
                         <strong>
                             <div className="loginLabels d-flex justify-content-center" >Don't have an account?
-                                <Link to="/signup" className="link-color" style={{color: "black",textDecoration: 'none'}}>
+                                <Link to="/signup" className="link-color" style={{ textDecoration: 'none' }}>
                                 Sign up
                                 </Link>
                             </div>
                             <div className="d-flex justify-content-center" >
-                                <Link to="/forgotpassword" className="link-color" style={{color: "black",textDecoration: 'none'}}>
+                                <Link to="/forgotpassword" className="link-color" style={{ textDecoration: 'none' }}>
                                 Forgot Password
                                 </Link>
                             </div>

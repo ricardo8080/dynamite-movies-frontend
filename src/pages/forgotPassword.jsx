@@ -1,16 +1,14 @@
 /*index.jsx*/
 import React from "react";
-
-export const ForgotPassword = (props) => {
+import { Link } from "react-router-dom";
+export const ForgotPassword = () => {
     return (
         <div>
             <h1>Forgot Password</h1>
-            <button
-                type="button" className="btn btn-outline-info"
-                onClick={() => {
-                    props.history.push("/");
-                }}        
-            > Back To Login
+            <button type="button" className="btn btn-outline-info"> 
+            <Link to="/" style={{textDecoration: 'none'}}>
+              Login
+            </Link>
             </button>
         </div>
     )

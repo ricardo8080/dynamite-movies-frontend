@@ -8,7 +8,7 @@ import MainPage from './pages/mainpage';
 import NotFoundPage from './pages/notfound';
 import RegisterPage from './pages/register';
 import SearchResultsPage from './pages/searchResults';
-import {ProvideAuth,PrivateRoute,AuthButton, useAuth} from './AuthenthicationFiles/authFiles'
+import { ProvideAuth , PrivateRoute } from './AuthenthicationFiles/authFiles'
 
 function App() {
   return (
@@ -16,14 +16,30 @@ function App() {
       <Router>
         <div>
           <Switch>
-            <Route exact path="/forgotPassword" component={ForgotPasswordPage} />
-            <Route exact path="/signup" component={RegisterPage} />
-            <Route exact path="/" component={LoginPage} />
-            <Route exact path="/signin" component={LoginPage} />
-            <Route exact path="/SearchResultsPage" component={SearchResultsPage} />
-            <Route exact path="/DetailedFormPage" component={DetailedFormPage} />
-            <Route exact path="/mainPage" component={MainPage} />
-            <Route exact path="/*"  component={NotFoundPage} />
+            <Route exact path="/forgotPassword">
+              <ForgotPasswordPage />
+            </Route>
+            <Route exact path="/signup">
+              <RegisterPage />
+            </Route>
+            <Route exact path="/">
+              <LoginPage />
+            </Route>
+            <Route exact path="/signin">
+              <LoginPage />
+            </Route>
+            <PrivateRoute exact path="/SearchResultsPage">
+              <SearchResultsPage />
+            </PrivateRoute>
+            <PrivateRoute exact path="/DetailedFormPage">
+              <DetailedFormPage />
+            </PrivateRoute>
+            <PrivateRoute exact path="/mainPage">
+              <MainPage />
+            </PrivateRoute>
+            <Route exact path="/*">
+              <NotFoundPage />
+            </Route>
           </Switch>
         </div>
       </Router>
@@ -32,3 +48,4 @@ function App() {
 }
 
 export default App;
+//<Route exact path="/mainPage" component={MainPage} />

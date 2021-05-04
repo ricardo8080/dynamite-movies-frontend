@@ -1,41 +1,27 @@
 /*index.jsx*/
 import React from "react";
-import auth from "../AuthenthicationFiles/auth";
 import MovieList from "../components/movie/MovieList";
-import {PrivateRoute} from '../AuthenthicationFiles/authFiles';
+import { AuthButton } from '../AuthenthicationFiles/authFiles';
+import { Link } from "react-router-dom";
 
-export const SearchResults = (props) => {
+export const SearchResults = () => {
   return (
-    <PrivateRoute>
       <div>
         <h1>Search Results</h1>
 
         <button
-          type="button"
-          className="btn btn-outline-info"
-          onClick={() => {
-            props.history.push("/Main-Page");
-          }}
-        >
-          Back to Main Page
+          type="button" className="btn btn-outline-info">
+          <Link to="/mainPage" style={{textDecoration: 'none'}}>
+              Back to Main Page
+          </Link>
         </button>
 
-        <button
-          type="button"
-          className="btn btn-outline-info"
-          onClick={() => {
-            auth.logout(() => {
-              props.history.push("/");
-            });
-          }}
-        >
-          Logout
-        </button>
+        
+        <AuthButton />
         <div>
           <MovieList></MovieList>
         </div>
       </div>
-    </PrivateRoute>
   );
 };
 

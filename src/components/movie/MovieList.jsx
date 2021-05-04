@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { CardGroup, Col, Row, Container } from "react-bootstrap";
+import { Col, Row, Container } from "react-bootstrap";
 import MovieCard from "../movie/MovieCard";
 import movies from "../../mockData.json";
 import "../style.css";

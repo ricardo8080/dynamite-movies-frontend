@@ -1,33 +1,21 @@
 /*index.jsx*/
 import React from "react";
-import auth from '../AuthenthicationFiles/auth';
-import {PrivateRoute} from '../AuthenthicationFiles/authFiles';
+import { AuthButton} from '../AuthenthicationFiles/authFiles';
+import { Link } from "react-router-dom";
 
-export const DetailedForm = (props) => {
+export const DetailedForm = () => {
     return (
-        <PrivateRoute>
-            <div> 
-                <h1>Detailed Form </h1>
-                
-                <button
-                    type="button" className="btn btn-outline-info"
-                    onClick={() => {
-                        props.history.push("/Main-Page");
-                    }}        
-                >Back to Main Page
-                </button>
-                
-                <button
-                    type="button" className="btn btn-outline-info"
-                    onClick={() => {
-                        auth.logout(()=>{
-                            props.history.push("/");
-                        });
-                    }}        
-                >Logout
-                </button>
-            </div>
-        </PrivateRoute>
+        <div> 
+            <h1>Detailed Form </h1>
+            
+            <button
+                type="button" className="btn btn-outline-info">
+                <Link to="/mainPage" style={{textDecoration: 'none'}}>
+                    Main Page
+                </Link>
+            </button>
+            <AuthButton />
+        </div>
     )
 };
 

@@ -55,21 +55,6 @@ export function useProvideAuth() {
     signout
   };
 }
-export function AuthButton() {
-  let history = useHistory();
-  let auth = useAuth();
-
-  return auth.user ? (
-    <button
-      onClick={() => {
-        auth.signout(() => history.push("/"));
-    }}>
-      Sign out
-    </button>
-  ) : (
-    <div></div>
-  );
-}
   
 // A wrapper for <Route> that redirects to the login
 // Login if you're not yet authenticated.
@@ -91,5 +76,23 @@ export function PrivateRoute({ children, ...rest }) {
         )
       }
     />
+  );
+}
+
+
+export function AuthButton() {
+  let history = useHistory();
+  let auth = useAuth();
+
+  return auth.user ? (
+    <button
+      type="button" className="btn btn-outline-info"
+      onClick={() => {
+        auth.signout(() => history.push("/"));
+    }}>
+      Sign out
+    </button>
+  ) : (
+    <div></div>
   );
 }
