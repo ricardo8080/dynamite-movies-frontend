@@ -29,3 +29,38 @@
   display: flex;
   flex-direction: row;
 }
+
+.ShowFiltersPage  {
+  margin-left: 10%;
+  margin-top: 5px;
+  margin-bottom: 5%;
+}
+
+#NameOfFilter {
+  margin-right: 20px;
+  color: #c4bbf0;
+}
+
+#dropdown-basic{
+  width: 200px;
+  height: 35px;
+  background-color: #4f3b78;
+  color: #fff;
+}
+#dropdown-basic :hover {
+  background-color: #363b4e;
+}
+
+#gendersContainer #genderButton {
+  margin-right: 10px;
+}
+
+.btn {
+  background-color: #4f3b78;
+  color: #fff
+}
+
+.btn-primary:hover{
+  background-color: #927fbf;
+  color: #fff
+}
