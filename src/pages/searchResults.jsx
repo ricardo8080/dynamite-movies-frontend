@@ -1,34 +1,24 @@
 /*index.jsx*/
 import React from "react";
-import auth from "../AuthenthicationFiles/auth";
 import MovieList from "../components/movie/MovieList";
-import SearchForm from "../components/searchForm";
-export const SearchResults = (props) => {
+import { AuthButton } from '../AuthenthicationFiles/authFiles';
+import { Link } from "react-router-dom";
+import SearchForm from "../components/SearchForm";
+
+export const SearchResults = () => {
   return (
     <div>
-      <div>
-        <h1>Search Results</h1>
-        <button
-          type="button"
-          className="btn btn-outline-info"
-          onClick={() => {
-            props.history.push("/Main-Page");
-          }}
-        >
+      <h1>Search Results</h1>
+
+      <button
+        type="button" className="btn btn-outline-info">
+        <Link to="/mainPage" style={{ textDecoration: 'none' }}>
           Back to Main Page
-        </button>
-        <button
-          type="button"
-          className="btn btn-outline-info"
-          onClick={() => {
-            auth.logout(() => {
-              props.history.push("/");
-            });
-          }}
-        >
-          Logout
-        </button>
-      </div>
+          </Link>
+      </button>
+
+
+      <AuthButton />
       <div>
         <SearchForm />
         <MovieList />
