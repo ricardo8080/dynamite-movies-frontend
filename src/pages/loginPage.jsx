@@ -5,7 +5,7 @@ import { BiKey } from "react-icons/bi";
 import { Link , useHistory } from "react-router-dom";
 import { useAuth } from '../AuthenthicationFiles/authFiles'
 import { Container, Col, Row } from "react-bootstrap";
-import logo from "../assets/images/logo3.png"
+import logo from "../assets/images/logoLogin.png"
 import "./loginPage.css";
 
 export const LoginPage = () => {
