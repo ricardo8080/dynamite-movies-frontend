@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PersonalizedNavBar from '../components/personalizedNavBar'
-import FilterPage from '../components/filterPage'
+import FilterPage from '../components/filterPage/filterPage'
 export const MainPage = () => {
     return (
             <div> 

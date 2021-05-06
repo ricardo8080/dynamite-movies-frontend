@@ -33,7 +33,7 @@
 .ShowFiltersPage  {
   margin-left: 10%;
   margin-top: 5px;
-  margin-bottom: 5%;
+  margin-bottom: 10px;
 }
 
 #NameOfFilter {
@@ -47,12 +47,18 @@
   background-color: #4f3b78;
   color: #fff;
 }
+
+#dropdown-menu {
+  height: 200px;
+  overflow-y: scroll;
+}
 #dropdown-basic :hover {
   background-color: #363b4e;
 }
 
 #gendersContainer #genderButton {
   margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .btn {
@@ -60,7 +66,7 @@
   color: #fff
 }
 
-.btn-primary:hover{
+.btn-primary:hover {
   background-color: #927fbf;
   color: #fff
 }
