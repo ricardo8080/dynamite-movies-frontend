@@ -28,7 +28,6 @@ export const FilterPage = () => {
     return showFilterWords === "Search with Filters" ? (
         <div>
             <FilterButton />
-            <ShowFilters />
         </div>
     ) : (
         <div>

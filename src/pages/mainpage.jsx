@@ -3,12 +3,9 @@ import { Link } from "react-router-dom";
 import PersonalizedNavBar from '../components/personalizedNavBar'
 import FilterPage from '../components/filterPage/filterPage'
 export const MainPage = () => {
-    return (
-            <div> 
-                <PersonalizedNavBar/>
-                <FilterPage />
-                
-
+    const TemporalButtons = () => {
+        return (
+            <div>
                 <button type="button" className="btn btn-outline-info" >
                     <Link to="/SearchResultsPage"  style={{textDecoration: 'none'}}>
                         Search Results 
@@ -20,7 +17,14 @@ export const MainPage = () => {
                         Detaild Form Page
                     </Link>
                 </button>   
-
+            </div>
+        );
+    }
+    return (
+            <div> 
+                <PersonalizedNavBar/>
+                <FilterPage />
+                <TemporalButtons />
             </div>
     )
 };

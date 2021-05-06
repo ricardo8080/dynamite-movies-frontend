@@ -84,15 +84,14 @@ export function AuthButton() {
   let history = useHistory();
   let auth = useAuth();
 
-  return auth.user ? (
+  //return auth.user ? (
+    return (
     <button
       type="button" className="btn btn-outline-info"
       onClick={() => {
         auth.signout(() => history.push("/"));
-    }}>
+      }}>
       Sign out
     </button>
-  ) : (
-    <div></div>
   );
 }
