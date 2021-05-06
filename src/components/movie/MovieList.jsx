@@ -9,7 +9,7 @@ class MovieList extends Component {
       <Container>
         <Row>
           {movies.map((data) => (
-            <Col className="mb-4" key={data.id}>
+            <Col className="mb-5 movie-list--card-group" key={data.id}>
               <MovieCard movie={data} />
             </Col>
           ))}
