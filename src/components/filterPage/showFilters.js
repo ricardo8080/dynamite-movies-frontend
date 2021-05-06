@@ -1,24 +1,31 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Button, Dropdown, ButtonGroup } from 'react-bootstrap'
 import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css'
 
 export const ShowFilterOptions = () => {
-    const countries = ["China", "Egypt", "France", "Hong Kong",
-                       "India", "Indonesia", "Iran", "Japan",
-                       "Korea", "Pakistan", "Poland","Turkey",
-                       "United Kingdom", "United States"];
-    const genres = [ "Action", "Adventure", "Black Comedy", "Comedy",
-                     "Crime", "Drama" ,"Fantasy", "Historical",
-                     "Horror", "Martial Arts", "Mistery", "Parody",
-                     "Romance", "Supernatural", "Thriller",
+    const countries = ["China", "Egypt", "France", "Hong Kong", "India", "Indonesia", "Iran", "Japan",
+                       "Korea", "Pakistan", "Poland","Turkey", "United Kingdom", "United States"];
+    const genres = [ "Action", "Adventure", "Black Comedy", "Comedy", "Crime", "Drama" ,"Fantasy", "Historical",
+                     "Horror", "Martial Arts", "Mistery", "Parody", "Romance", "Supernatural", "Thriller",
                      "War and Military", "Western"];
     const [countrySelected, setCountry] = useState("None");
+    const [genresSelected, setGenres] = useState([]);
     const [dateFrom, setDateFrom] = useState(new Date());
     const [dateTo, setDateTo] = useState(new Date());
-    
+
     function setCountryToShow (newValue) {
       setCountry(newValue);
+    };
+    function addGenresSelected (newGenre) {
+      if(genresSelected.includes(newGenre)){
+        const temporal = genresSelected
+                         .filter((item) => item !== newGenre);
+        setGenres(temporal);
+      } else {
+        const temporal = genresSelected.concat([newGenre]);
+        setGenres(temporal);
+      }
     };
     function setDateFromButtonGroup (type) {
       let newDate= new Date();
@@ -38,7 +45,16 @@ export const ShowFilterOptions = () => {
         default:
       };
       setDateFrom(newDate);
+      setDateTo(new Date());
     };
+
+    useEffect(() => {
+      /** If the start Date is higher than the endDate, force it to equal to startDate **/
+      if(dateFrom > dateTo) {
+        setDateTo(dateFrom);
+      }
+    }, [dateFrom,dateTo])
+
     const CountryFilter = () =>{
       return (
         <div className="ShowFiltersPage">
@@ -52,7 +68,7 @@ export const ShowFilterOptions = () => {
                 {countries.map((element) => (
                     <Dropdown.Item key={element}
                       id="dropdown-basic"
-                      onClick={() => { setCountryToShow(element,"default")}}
+                      onClick={() => { setCountryToShow(element)}}
                     >
                       {element}
                     </Dropdown.Item>
@@ -62,7 +78,7 @@ export const ShowFilterOptions = () => {
           </div>
         </div>
       );
-    }
+    };
     const GenresFilter = () =>{
       return (
         <div>
@@ -73,11 +89,26 @@ export const ShowFilterOptions = () => {
                   <Button 
                     className="btn btn-outline-info"
                     id="genderButton" 
+                    onClick={() => { addGenresSelected(element)}}
                     key={element}
                   >{element}
                     </Button>
                 ))}
               </div>
+          </div>
+          <div className="ShowFiltersPage" style={{display:"inline-flex"}}> 
+            <h4 id="NameOfFilter">Selected:</h4>
+            <div id="gendersContainer">
+              {genresSelected.map((element) => (
+                <Button 
+                  className="btn btn-outline-info"
+                  id="genderButton" 
+                  onClick={() => { addGenresSelected(element)}}
+                  key={element}
+                >{element}
+                </Button>
+              ))}
+            </div>
           </div>
         </div>
       );
