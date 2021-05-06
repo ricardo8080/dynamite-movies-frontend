@@ -4,6 +4,9 @@ import { BsPeopleCircle } from "react-icons/bs";
 import { BiKey } from "react-icons/bi";
 import { Link , useHistory } from "react-router-dom";
 import { useAuth } from '../AuthenthicationFiles/authFiles'
+import { Container, Col, Row } from "react-bootstrap";
+import logo from "../assets/images/logo3.png"
+import "./loginPage.css";
 
 export const LoginPage = () => {
     let history = useHistory();
@@ -16,9 +19,12 @@ export const LoginPage = () => {
       });
     };
     return (
-        <div className="centerForm">
-            <form className="formLogin">
-                <div className="divLogin">
+        <Container className="centerForm">
+            <Row className="formLogin">
+                <Col className="divLogin">
+                <img src={logo} alt="Logo" />
+                </Col>
+                <Col className="divLogin">
                     <h1>Sign In</h1>
                     <div className="margin">
                         <strong><label className="loginLabels">Username:</label></strong>
@@ -41,7 +47,7 @@ export const LoginPage = () => {
                         </div>
                     </div>
                     <div className="d-flex justify-content-center links">
-                        <button type="button" className="btn text-white bg-secondary"
+                        <button type="button" className="btn btn-login"
                             onClick={login}>
                             Login
                         </button>
@@ -60,11 +66,9 @@ export const LoginPage = () => {
                             </div>
                         </strong>
                     </div>
-                </div>
-               
-            </form>
-        </div>
-    );
-};
+                </Col>
+            </Row>
+        </Container>
+    )};
 
 export default LoginPage;

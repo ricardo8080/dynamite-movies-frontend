@@ -1,0 +1,61 @@
+
+
+  h1, h5, .icon-color {
+    color:  #4f3b78;
+  }
+  .centerForm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  .formLogin {
+    
+    background-image:linear-gradient(45deg,rgba(229, 217, 240, 0.87), #cecae2d5, #927fbfde,#432e6b);
+    opacity:initial;
+    width: 110vh;
+    border-radius: 3vh;
+  }
+
+  .divLogin {
+    margin: 10% 5% 10% 5%;
+
+  }
+  .margin {
+      margin: 10px;
+  }
+
+  .loginLabels {
+    color: #3c2b58;   
+  }
+
+  .link-color {
+    color: #4f3b78 !important; 
+  }
+  .link-color:hover, .link-color:active {
+    color: #351b68 !important;
+  }
+
+  .form-control:focus {
+    border-color: #4f3b78 !important;
+    
+  }
+ 
+  .btn-login {
+    background-color: #4f3b78;
+    color:#FFF;
+    border-color: #363b4e;
+  }
+    
+  .btn-login:hover, .btn-login:focus, .btn-login:active, .btn-login.active, .open .dropdown-toggle.btn-login {
+    background-color: #2f175f;
+    color:#FFF;
+    border-color: #31347B;
+  }
+
+   /*
+    #c4bbf0 mas claro
+    #927fbf
+    #4f3b78
+    #363b4e mas oscuro
+  */
