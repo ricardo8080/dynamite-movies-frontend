@@ -44,6 +44,11 @@
 .search-form--link-trends {
   margin-top: 30px;
 }
+.ShowFiltersPage  {
+  margin-left: 10%;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
 
 a {
   font-size: 30px;
@@ -65,6 +70,19 @@ a {
   flex: 1;
 }
 
+#dropdown-menu {
+  height: 200px;
+  overflow-y: scroll;
+}
+#dropdown-basic :hover {
+  background-color: #363b4e;
+}
+
+#gendersContainer #genderButton {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
 .search-form--form-control {
   background-color: transparent;
   color: white;
@@ -76,4 +94,8 @@ a {
 .search-form--select {
   background-color: transparent;
   color: white;
+}
+.btn-primary:hover {
+  background-color: #927fbf;
+  color: #fff
 }
