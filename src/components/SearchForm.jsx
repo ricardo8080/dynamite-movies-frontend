@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { Form, Col, Row } from "react-bootstrap";
-import Select from 'react-select';
-import makeAnimated from 'react-select/animated';
+import Select, { components } from 'react-select';
 import "./style.css";
-
-const animatedComponents = makeAnimated();
-
 class SearchForm extends Component {
   render() {
+    const ValueContainer = ({ children, ...props }) => (
+      <components.ValueContainer {...props}>{children}</components.ValueContainer>
+    );
     const optionsForGender = [
       { value: 'action', label: 'Action' },
       { value: 'animation', label: 'Animation' },
@@ -31,8 +30,8 @@ class SearchForm extends Component {
           >
             <Row>
               <Col sm={8}>
-                {/* <Form.Control className="search-form--form-control" placeholder="Search..." /> */}
-                <Form.Control placeholder="Search..." />
+                <Form.Control className="search-form--form-control" placeholder="Search..." />
+                {/* <Form.Control placeholder="Search..." /> */}
               </Col>
               <Col sm={2}>
                 <button
@@ -56,7 +55,7 @@ class SearchForm extends Component {
               Country
             </Form.Label>
             <Col sm="6">
-              <Form.Control as="select" defaultValue="Select...">
+              <Form.Control as="select" defaultValue="Select..." className="search-form--form-control">
                 <option></option>
                 <option>USA</option>
                 <option>Korea</option>
@@ -74,11 +73,20 @@ class SearchForm extends Component {
             <Col sm="6">
               <Select
                 closeMenuOnSelect={false}
-                components={animatedComponents}
                 isMulti
                 name="gender"
-                options={optionsForGender}
                 classNamePrefix="select"
+                styles={{
+                  valueContainer: base => ({
+                    ...base,
+                    background: '#07010d',
+                    color: 'white',
+                  }),
+                }}
+                components={{ ValueContainer }}
+                isSearchable
+                options={optionsForGender}
+              // className="search-form--select"
               />
             </Col>
           </Form.Group>
@@ -94,19 +102,16 @@ class SearchForm extends Component {
               Start Date
             </Form.Label>
             <Col sm="2">
-              <Form.Control type="date" name='date_of_birth' />
+              <Form.Control type="date" name='start_date' className="search-form--form-control" />
             </Col>
             <Form.Label column sm="2" className="search-form--label">
               End Date
             </Form.Label>
             <Col sm="2">
-              <Form.Control type="date" name='date_of_birth' />
+              <Form.Control type="date" name='end_date' className="search-form--form-control" />
             </Col>
           </Form.Group>
           <Form.Group as={Row}>
-            <Form.Label as="legend" column sm={2}>
-              Radios
-      </Form.Label>
             <Row>
               <Col sm={2}>
                 <Form.Check

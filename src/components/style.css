@@ -84,15 +84,28 @@ a {
 }
 
 .search-form--form-control {
-  background-color: transparent;
-  color: white;
-  opacity: 0.3;
+  background-color: transparent !important;
+  color: white !important;
+  opacity: 0.4;
   border: 1px solid white;
   border-radius: 5px 5px 5px 5px;
 }
 
 .search-form--select {
-  background-color: transparent;
+  background-color: transparent !important;
+  color: white !important;
+  /* option {
+    background-color: #363b4e;
+    color: white;
+  } */
+}
+
+select option {
+  background-color: #291f41;
+  color: white;
+}
+
+Select :valuecontainer {
   color: white;
 }
 .btn-primary:hover {

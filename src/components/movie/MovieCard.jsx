@@ -13,7 +13,7 @@ class MovieCard extends Component {
           <Card.Body className="d-flex flex-column">
             <Card.Title className="movie-card--title">{movie.title}</Card.Title>
             <Card.Subtitle>Date: {movie.date}</Card.Subtitle>
-            <Card.Subtitle>Country:{movie.country}</Card.Subtitle>
+            <Card.Subtitle>Country: {movie.country}</Card.Subtitle>
           </Card.Body>
         </Card>
       </div>
