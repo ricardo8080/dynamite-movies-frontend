@@ -8,7 +8,7 @@ class MovieCard extends Component {
     const { movie } = this.props;
     return (
       <div>
-        <Card className="movie-card--content">
+        <Card className="movie-card--content" key={movie.id}>
           <Card.Img variant="top" src={movie.img} />
           <Card.Body className="d-flex flex-column">
             <Card.Title className="movie-card--title">{movie.title}</Card.Title>
@@ -21,10 +21,11 @@ class MovieCard extends Component {
   }
 }
 MovieCard.propTypes = {
-  movie: PropTypes.oneOf(PropTypes.any).isRequired,
+  movie: PropTypes.object.isRequired,
 };
 MovieCard.defaultProps = {
   movie: {
+    id: 0,
     title: "none",
     date: "none",
     country: "none",
