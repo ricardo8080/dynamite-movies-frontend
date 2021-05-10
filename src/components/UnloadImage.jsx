@@ -45,6 +45,7 @@ class UnloadImage extends Component {
         <Container>
           <Row onSubmit={this._handleSubmit}>
             <input type="file" className="form-control marginImage" onChange={this._handleImageChange} />
+            
             <button type="submit" onClick={this._handleSubmit}>Upload Image</button>
           </Row>
           {$imagePreview}
