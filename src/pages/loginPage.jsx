@@ -1,10 +1,10 @@
 /*index.jsx*/
 import React from "react";
 import { BsPeopleCircle } from "react-icons/bs";
-import { BiKey } from "react-icons/bi";
+import { RiLockPasswordFill } from "react-icons/ri";
 import { Link , useHistory } from "react-router-dom";
 import { useAuth } from '../AuthenthicationFiles/authFiles'
-import { Container, Col, Row } from "react-bootstrap";
+import { Container, Col, Row, Form, Button } from "react-bootstrap";
 import logo from "../assets/images/logoLogin.png"
 import "./loginPage.css";
 
@@ -20,39 +20,38 @@ export const LoginPage = () => {
     };
     return (
         <Container className="centerForm">
-            <Row className="formLogin">
+            <Row className="backgroundForm">
                 <Col className="divLogin">
                 <img src={logo} alt="Logo" />
                 </Col>
                 <Col className="divLogin">
                     <h1>Sign In</h1>
-                    <div className="margin">
-                        <strong><label className="loginLabels">Username:</label></strong>
-                        <div className="input-group form-group">
-                            <div>
-                                <span className="input-group-text"><i><BsPeopleCircle className="icon-color"/></i></span>
-                            </div>
-                            <input type="text" className="form-control" placeholder="Username"/>
-                            
+                    <Form.Group className="margin">
+                    <strong><Form.Label className="loginLabels">Username:</Form.Label></strong>
+                    <Form.Group className="input-group form-group">
+                        <div>
+                            <span className="input-group-text"><i><BsPeopleCircle className="icon-color"/></i></span>
                         </div>
-                    </div>
-                    <div className="margin">
-                    <strong><label className="loginLabels">Password:</label></strong>
-                        <div className="input-group form-group">
+                        <input type="text" className="form-control" placeholder="Username"/>
+                        
+                    </Form.Group>
+                
+                    <strong><Form.Label className="loginLabels">Password:</Form.Label></strong>
+                        <Form.Group className="input-group form-group">
                             <div>
-                                <span className="input-group-text"><i><BiKey className="icon-color"/></i></span>
+                                <span className="input-group-text"><i><RiLockPasswordFill className="icon-color"/></i></span>
                             </div>
                             <input type="password" className="form-control" placeholder="Password"/>
                             
-                        </div>
-                    </div>
-                    <div className="d-flex justify-content-center links">
-                        <button type="button" className="btn btn-login"
+                        </Form.Group>
+                    </Form.Group>
+                    <Form.Group className="d-flex justify-content-center links">
+                        <Button type="button" className="btn btn-login"
                             onClick={login}>
                             Login
-                        </button>
-                    </div>
-                    <div className="margin">
+                        </Button>
+                    </Form.Group>
+                    <Form.Group className="margin">
                         <strong>
                             <div className="loginLabels d-flex justify-content-center" >Don't have an account?
                                 <Link to="/signup" className="link-color" style={{ textDecoration: 'none' }}>
@@ -65,7 +64,7 @@ export const LoginPage = () => {
                                 </Link>
                             </div>
                         </strong>
-                    </div>
+                    </Form.Group>
                 </Col>
             </Row>
         </Container>
