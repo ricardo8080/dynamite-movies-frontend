@@ -77,7 +77,7 @@ export const Register = () => {
                 <UnloadImage />
                 <Form.Group className="margin">
                     <Link to="/" className="btn btn-login d-flex justify-content-center" >
-                        Login
+                        Register
                     </Link>
                 </Form.Group>
             </Col>
