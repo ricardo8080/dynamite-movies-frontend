@@ -8,11 +8,11 @@ class MovieCard extends Component {
     const { movie } = this.props;
     return (
       <div>
-        <Card className="movie-card--content" key={movie.id}>
-          <Card.Img variant="top" src={movie.img} />
+        <Card className="movie-card--content" key={movie._id}>
+          <Card.Img variant="top" src={movie.principalImage} />
           <Card.Body className="d-flex flex-column">
-            <Card.Title className="movie-card--title">{movie.title}</Card.Title>
-            <Card.Subtitle>Date: {movie.date}</Card.Subtitle>
+            <Card.Title className="movie-card--title">{movie.nameMovie}</Card.Title>
+            <Card.Subtitle>Date: {movie.releaseDate}</Card.Subtitle>
             <Card.Subtitle>Country: {movie.country}</Card.Subtitle>
           </Card.Body>
         </Card>
@@ -25,11 +25,11 @@ MovieCard.propTypes = {
 };
 MovieCard.defaultProps = {
   movie: {
-    id: 0,
-    title: "none",
-    date: "none",
+    _id: 0,
+    nameMovie: "none",
+    releaseDate: "none",
     country: "none",
-    img: ImageMovie,
+    principalImage: ImageMovie,
   },
 };
 export default MovieCard;

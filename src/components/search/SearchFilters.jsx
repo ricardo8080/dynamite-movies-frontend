@@ -12,7 +12,7 @@ const IndicatorsContainer = props => {
 };
 class SearchForm extends Component {
   render() {
-    const optionsForGender = [
+    const optionsForGenres = [
       { value: 'action', label: 'Action' },
       { value: 'animation', label: 'Animation' },
       { value: 'documentary', label: 'Documentary' },
@@ -49,17 +49,17 @@ class SearchForm extends Component {
         </Form.Group>
         <Form.Group
           as={Row}
-          controlId="formGender"
+          controlId="formGenres"
           className="search-form--form-group"
         >
           <Form.Label column sm="2" className="search-form--label">
-            Gender
+            Genres
             </Form.Label>
           <Col sm="6">
             <Select
               closeMenuOnSelect={false}
               isMulti
-              name="gender"
+              name="genres"
               theme={theme => ({
                 ...theme,
                 colors: {
@@ -106,7 +106,7 @@ class SearchForm extends Component {
               }}
               components={{ IndicatorsContainer }}
               isSearchable
-              options={optionsForGender}
+              options={optionsForGenres}
             />
           </Col>
         </Form.Group>
