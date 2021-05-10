@@ -1,13 +1,14 @@
 import React, {Component, useState} from 'react'
 import { Container,Row, Form } from 'react-bootstrap';
 import { RiImageAddFill } from "react-icons/ri";
+import profile from "../assets/images/profile.png"
 import "../pages/loginPage.css"
 class UnloadImage extends Component {
     constructor(props) {
       super(props);
       this.state = {
         file: '',
-        imagePreviewUrl: ''
+        imagePreviewUrl: profile
       };
       this._handleImageChange = this._handleImageChange.bind(this);
       this._handleSubmit = this._handleSubmit.bind(this);
@@ -45,8 +46,6 @@ class UnloadImage extends Component {
         <Container>
           <Row onSubmit={this._handleSubmit}>
             <input type="file" className="form-control marginImage" onChange={this._handleImageChange} />
-            
-            <button type="submit" onClick={this._handleSubmit}>Upload Image</button>
           </Row>
           {$imagePreview}
         </Container>

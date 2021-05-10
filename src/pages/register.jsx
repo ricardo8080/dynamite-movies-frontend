@@ -72,16 +72,14 @@ export const Register = () => {
                         <Form.Check inline label="None" name="gender" className="loginLabels" type="radio" />
                     </Form.Group>
                 </Form.Group>
-                <Form.Group>
-                    <Link to="/" className="btn btn-login" >
-                        Login
-                    </Link>
-                </Form.Group>
-                <div className="margin">
-                </div>
             </Col>
             <Col className="divRegister">
                 <UnloadImage />
+                <Form.Group className="margin">
+                    <Link to="/" className="btn btn-login d-flex justify-content-center" >
+                        Login
+                    </Link>
+                </Form.Group>
             </Col>
         </Row>
     </Container>
