@@ -27,7 +27,7 @@
     margin:  2%;
   }
   .marginImage {
-    margin-top: 30% ;
+    margin-top: 23% ;
 
   }
   .margin {
@@ -64,7 +64,12 @@
     color:#FFF;
     border-color: #363b4e;
   }
-    
+  .btn-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } 
+
   .btn-login:hover, .btn-login:focus, .btn-login:active, .btn-login.active, .open .dropdown-toggle.btn-login {
     background-color: #2f175f;
     color:#FFF;

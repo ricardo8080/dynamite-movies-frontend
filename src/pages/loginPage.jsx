@@ -46,7 +46,7 @@ export const LoginPage = () => {
                         </Form.Group>
                     </Form.Group>
                     <Form.Group className="d-flex justify-content-center links">
-                        <Button type="button" className="btn btn-login"
+                        <Button type="button" className="btn btn-login btn-lg"
                             onClick={login}>
                             Login
                         </Button>
