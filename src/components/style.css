@@ -1,8 +1,8 @@
 .movie-card--content {
-  width: 25%;
-  max-width: 1200px;
-  min-width: 320px;
-  margin: 40px;
+  width: 20%;
+  max-width: 1000px;
+  min-width: 300px;
+  margin: 20px;
   border-left: 6px solid rgba(0, 0, 0, 0.2);
   border-right: 3px solid rgba(0, 0, 0, 1.1);
   border-top: 3px solid rgba(0, 0, 0, 1.1);
@@ -14,7 +14,7 @@
 
 .movie-card--title {
   color: white;
-  font-size: 25px;
+  font-size: 22px;
   margin-top: 10px;
   margin-bottom: 20px;
   background-size: cover;
@@ -22,7 +22,7 @@
 
 .card:hover {
   box-shadow: 10px 10px 20px 8px rgba(255, 255, 255, 0.2);
-  transition: all 0.4s linear;
+  transition: all 0.3s linear;
 }
 
 .movie-list--card-group {
@@ -30,22 +30,42 @@
   flex-direction: row;
 }
 
-.ShowFiltersPage  {
+.search-form--content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-form--form {
+  width: 90%;
+  margin: 20px;
+}
+
+.search-form--link-trends {
+  margin-top: 30px;
+}
+
+.ShowFiltersPage {
   margin-left: 10%;
   margin-top: 5px;
   margin-bottom: 10px;
 }
 
-#NameOfFilter {
-  margin-right: 20px;
-  color: #c4bbf0;
+.search-form--button {
+  color: #927fbf;
+  border: 1px solid #927fbf;
+  min-width: 100px;
 }
 
-#dropdown-basic{
-  width: 200px;
-  height: 35px;
-  background-color: #4f3b78;
-  color: #fff;
+.search-form--label {
+  color: #927fbf;
+}
+
+.search-form--form-group {
+  margin: 30px;
+  min-width: 80%;
+  max-width: 100%;
+  flex: 1;
 }
 
 #dropdown-menu {
@@ -61,12 +81,28 @@
   margin-bottom: 10px;
 }
 
-.btn {
-  background-color: #4f3b78;
-  color: #fff
+.search-form--form-control {
+  background-color: transparent !important;
+  color: white !important;
+  opacity: 0.8;
+  border: 1px solid white;
+  border-radius: 5px 5px 5px 5px;
+}
+
+select option {
+  background-color: #07010d;
+  color: white;
+}
+
+select option:checked {
+  background: #a89bc5 !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
 }
 
 .btn-primary:hover {
   background-color: #927fbf;
-  color: #fff
+  color: #fff;
 }

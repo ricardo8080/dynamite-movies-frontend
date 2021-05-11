@@ -8,9 +8,7 @@ import MainPage from './pages/mainpage';
 import NotFoundPage from './pages/notfound';
 import RegisterPage from './pages/register';
 import SearchResultsPage from './pages/searchResults';
-import { ProvideAuth 
-     //, PrivateRoute 
-    } from './AuthenthicationFiles/authFiles'
+import { ProvideAuth , PrivateRoute } from './AuthenthicationFiles/authFiles'
 
 function App() {
   return (
@@ -30,15 +28,15 @@ function App() {
             <Route exact path="/signin">
               <LoginPage />
             </Route>
-            <Route exact path="/SearchResultsPage"> 
+            <PrivateRoute exact path="/SearchResultsPage">
               <SearchResultsPage />
-            </Route>
-            <Route exact path="/DetailedFormPage">
+            </PrivateRoute>
+            <PrivateRoute exact path="/DetailedFormPage">
               <DetailedFormPage />
-            </Route>
-            <Route exact path="/mainPage">
+            </PrivateRoute>
+            <PrivateRoute exact path="/mainPage">
               <MainPage />
-            </Route>
+            </PrivateRoute>
             <Route exact path="/*">
               <NotFoundPage />
             </Route>

@@ -8,14 +8,11 @@ class MovieList extends Component {
     return (
       <Container>
         <Row>
-          {movies.map((data) => (
-            <Col className="mb-4" key={data.id}>
-              <MovieCard movie={data} />
+          {movies.map((movie) => (
+            <Col className="mb-5 movie-list--card-group" key={movie.id}>
+              <MovieCard movie={movie} />
             </Col>
           ))}
-          <Col>
-            <MovieCard />
-          </Col>
         </Row>
       </Container>
     );

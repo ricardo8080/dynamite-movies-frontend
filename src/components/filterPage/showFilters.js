@@ -4,10 +4,12 @@ import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css'
 
 export const ShowFilterOptions = () => {
-    const countries = ["China", "Egypt", "France", "Hong Kong", "India", "Indonesia", "Iran", "Japan",
+    const countries = ["Animation", "Biography", "China", "Egypt", "France", "Hong Kong", "India", "Indonesia", "Iran", "Japan",
                        "Korea", "Pakistan", "Poland","Turkey", "United Kingdom", "United States"];
-    const genres = [ "Action", "Adventure", "Black Comedy", "Comedy", "Crime", "Drama" ,"Fantasy", "Historical",
-                     "Horror", "Martial Arts", "Mistery", "Parody", "Romance", "Supernatural", "Thriller",
+    const genres = [ "Action", "Adventure", "Black Comedy", "Comedy", "Crime",
+                     "Drama" ,"Fantasy", "Historical",
+                     "Horror", "Martial Arts", "Mistery", "Parody", 
+                     "Romance",  "Sci-Fi", "Sport", "Supernatural", "Thriller",
                      "War and Military", "Western"];
     const [countrySelected, setCountry] = useState("None");
     const [genresSelected, setGenres] = useState([]);
