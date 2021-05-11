@@ -1,7 +1,8 @@
 import React from "react";
-import logo from "../assets/images/logo.svg"
-import loupe from "../assets/images/loupe.svg"
-import placeholderUserPhoto from '../assets/images/placeholder.png'
+import logo from "../assets/images/logo.svg";
+import { Link } from "react-router-dom";
+import loupe from "../assets/images/loupe.svg";
+import placeholderUserPhoto from '../assets/images/placeholder.png';
 import { AuthButton } from '../AuthenthicationFiles/authFiles';
 
 export const PersonalizedNavBar = () => {
@@ -16,9 +17,14 @@ export const PersonalizedNavBar = () => {
                         </a>
                         <form className="d-flex">
                         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
-                        <button className="btn btn-outline-success" type="submit">
-                           <img  src={loupe} alt='loupe' width="30" height="24"></img>
-                        </button>
+                        
+
+                        <button type="button" className="btn btn-outline-info" >
+                            <Link to="/SearchResultsPage"  style={{textDecoration: 'none'}}>
+                                <img  src={loupe} alt='loupe' width="30" height="24"></img>
+                            </Link>
+                        </button>   
+
                         </form>
                         <a className="navbar-brand" href="/mainPage">
                             <img src={placeholderUserPhoto} alt='placeholderUserPhoto' width="30" height="24" ></img>
@@ -31,3 +37,4 @@ export const PersonalizedNavBar = () => {
     )
 };
 export default PersonalizedNavBar;
+//<button className="btn btn-outline-success" type="submit">
