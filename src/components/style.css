@@ -16,12 +16,23 @@
   color: white;
   font-size: 22px;
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   background-size: cover;
 }
 
+.movie-card--subtitle {
+  margin-bottom: 5px;
+}
+
+.movie-card--text {
+  height: 90px;
+  opacity: 0.8;
+  font-size: 14px;
+  overflow-y: scroll;
+}
+
 .card:hover {
-  box-shadow: 10px 10px 20px 8px rgba(255, 255, 255, 0.2);
+  box-shadow: 15px 15px 20px 10px rgba(255, 255, 255, 0.2);
   transition: all 0.3s linear;
 }
 
