@@ -18,9 +18,7 @@ class MovieCard extends Component {
   }
   changeDateFormat(date) {
     return moment(date.toString().split('T')[0]).format('MMMM Do, YYYY');
-
   }
-
   showGenres(list) {
     let text = "";
     list.forEach((genre) => {
@@ -35,7 +33,7 @@ class MovieCard extends Component {
     return (
       <div>
         <Card className="movie-card--content" key={movie._id} onClick={(event) => this.show(event)}>
-          <Card.Img variant="top" src={movie.principalImage} />
+          <Card.Img variant="top" src={movie.principalImage} className="movie-card--img" />
           <Card.Body className="d-flex flex-column">
             <Card.Title className="movie-card--title">{movie.nameMovie}</Card.Title>
             <Card.Subtitle className="movie-card--subtitle">
@@ -72,9 +70,9 @@ MovieCard.defaultProps = {
   movie: {
     _id: 0,
     nameMovie: "none",
-    releaseDate: new Date(),
+    releaseDate: new Date().toISOString(),
     country: "none",
-    genres: [],
+    genres: ["none"],
     principalImage: ImageMovie,
     description: "none",
   },

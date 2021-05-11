@@ -1,7 +1,6 @@
 .movie-card--content {
-  width: 20%;
-  max-width: 1000px;
-  min-width: 300px;
+  max-width: 275px;
+  min-width: 235px;
   margin: 20px;
   border-left: 6px solid rgba(0, 0, 0, 0.2);
   border-right: 3px solid rgba(0, 0, 0, 1.1);
@@ -14,21 +13,37 @@
 
 .movie-card--title {
   color: white;
-  font-size: 22px;
+  font-size: 19px;
   margin-top: 10px;
   margin-bottom: 10px;
   background-size: cover;
 }
-
+.movie-card--img {
+  min-height: 365px;
+  max-height: 375px;
+}
 .movie-card--subtitle {
+  font-size: 13px;
   margin-bottom: 5px;
 }
 
 .movie-card--text {
-  height: 90px;
+  height: 85px;
   opacity: 0.8;
-  font-size: 14px;
+  font-size: 12px;
   overflow-y: scroll;
+}
+.movie-card--text::-webkit-scrollbar {
+  width: 12px;
+  background-color: transparent;
+}
+.movie-card--text::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: white;
+}
+.movie-card--text::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #927fbf;
 }
 
 .card:hover {
@@ -50,10 +65,6 @@
 .search-form--form {
   width: 90%;
   margin: 20px;
-}
-
-.search-form--link-trends {
-  margin-top: 30px;
 }
 
 .ShowFiltersPage {
@@ -112,7 +123,9 @@ select option:checked {
 input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
-
+strong {
+  color: #9e97ac;
+}
 .btn-primary:hover {
   background-color: #927fbf;
   color: #fff;
