@@ -62,6 +62,12 @@
     opacity: 0.8;
     border-radius: 5px 5px 5px 5px;
   }
+  .form-control {
+    background-image: white;
+    color: #3c2b58 !important;
+    opacity: 0.8;
+    border-radius: 5px 5px 5px 5px;
+  }
   .registerLabels {
     color: #9a8caf;   
   }
@@ -95,7 +101,7 @@
 
   .btn-login:hover, .btn-login:active,.btn-login:focus, .open .dropdown-toggle.btn-login {
     color: #c4bbf0 !important;
-    background-color: #250e50 !important;
+    background-color: #29213a !important;
     border-color: #4f3b78;
 
   }
