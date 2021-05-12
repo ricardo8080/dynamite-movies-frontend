@@ -106,7 +106,11 @@
 
   }
 
-
+  .alertLogin {
+    margin-left: 40px;
+    background-color: rgb(243, 77, 77);
+    color: white;
+  }
    /*
     #c4bbf0 mas claro
     #927fbf

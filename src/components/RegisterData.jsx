@@ -60,12 +60,17 @@ class RegisterData extends Component {
           email: this.state.email
         }
 
-        await axios.post( `http://localhost:5000/account/Register`, user, { 
-          headers: { "Content-Type": "application/json"}}
+        if (user.age >= 13 && user.age <= 150 ) {
 
-        ) .then(res => {
-          console.log(res);
-        })
+          await axios.post( `http://localhost:5000/account/Register`, user, { 
+            headers: { "Content-Type": "application/json"}}
+
+          ) .then(res => {
+            console.log(res);
+          })
+        } else {
+          console.log("no tienen la edad para registrarse");
+        }
 
       } catch (err) {
         console.log(err);
@@ -133,8 +138,8 @@ class RegisterData extends Component {
       return date.toISOString();
     }
     getAge(date) {
-      if (date !== '') {
-        return moment().diff(moment(Date.now(), 'YYYYMMDD'), 'years');
+      if (date === '') {
+        return 0;
       } else{
         return moment().diff(moment(date, 'YYYYMMDD'), 'years');
       }
