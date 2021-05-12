@@ -1,12 +1,14 @@
 import React, {Component} from 'react'
 import { Container, Col, Row, Form } from "react-bootstrap";
 import { BsPeopleCircle } from "react-icons/bs";
-import { RiLockPasswordFill } from "react-icons/ri";
+import { RiLockPasswordFill, RiQuestionAnswerFill } from "react-icons/ri";
 import { MdLocationCity } from "react-icons/md";
 import { GiModernCity } from "react-icons/gi";
+import { BsFillQuestionCircleFill } from "react-icons/bs";
 import axios from "axios";
 import profile from "../assets/images/profile.png"
 import moment from "moment";
+import questions from "../mockQuestion.json"
 import "../pages/loginPage.css"
 
 class RegisterData extends Component {
@@ -22,29 +24,20 @@ class RegisterData extends Component {
           countryResidence: '',
           gender: '',
           birthday: '',
-          accountImage: ''
+          accountImage: '',
+          securityQuestion: questions[0].label,
+          securityAnswer:"",
       };
       this.handleImageChange = this.handleImageChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
       this.changeHandler = this.changeHandler.bind(this);
       this.changeCheckHandler = this.changeCheckHandler.bind(this);
+      this.handleChangeQuestions = this.handleChangeQuestions.bind(this); 
     }
 
 
 
     async postAccount(){
-
-  /*    const data = new FormData();
-      data.append("username", 'raphael');
-      data.append("password", "sasa");
-      data.append("birthday", "14/56/5");
-      data.append("age",34);
-      data.append("city","adv");
-      data.append("countryResidence","233");
-      data.append("gender","e");
-      data.append("accountPicture","dsd");
-      data.append("securityQuestion","ds");
-      data.append("securityAnswer","233");*/
 
       try {
 
@@ -75,7 +68,9 @@ class RegisterData extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.postAccount();
+        //this.postAccount();
+        console.log(this.state);
+      
     }
     changeHandler(e) {
       let key = e.target.name;
@@ -87,7 +82,10 @@ class RegisterData extends Component {
       let id = e.target.id;
       this.setState({[key]: id});
     }
-    
+    handleChangeQuestions(e) {
+      this.setState({ securityQuestion: e.target.value });
+    }
+
     handleImageChange(e) {
       e.preventDefault();
   
@@ -183,14 +181,34 @@ class RegisterData extends Component {
                   </Form.Group>
               </Col>
               <Col className="divRegister">
-                    <div >
-                      <input type="file" className="form-control marginImage" name="accountImage" onChange={this.handleImageChange} />
-                    </div>
-              {$imagePreview}
-                  <Form.Group className="margin btn-center">
-                      <button className="btn btn-login btn-lg">Register</button> 
+                  <strong><Form.Label className="loginLabels marginImage">Security Question:</Form.Label></strong>
+                  <Form.Group className="input-group form-group">
+                      <div>
+                        <span className="input-group-text"><i><BsFillQuestionCircleFill className="icon-color"/></i></span>
+                      </div>
+                      <select className="form-control"  onChange={this.handleChangeQuestions}> 
+                        {
+                          questions.map((option,i) => (
+                          <option key={i} name="securityQuestion" value={option.label}>{option.label}</option>
+                      ))}
+                      </select>
+                  </Form.Group> 
+                  <strong><Form.Label className="loginLabels">Security Answer:</Form.Label></strong>
+                  <Form.Group className="input-group form-group">
+                      <div>
+                          <span className="input-group-text"><i><RiQuestionAnswerFill className="icon-color"/></i></span>
+                      </div>
+                      <input type="text" className="form-control" name="securityAnswer" placeholder="Security Answer" onChange={this.changeHandler}/>
+                      
                   </Form.Group>
+                  <Form.Group className="input-group form-group margin" >
+                    <input type="file" className="form-control" name="accountImage" onChange={this.handleImageChange} />
+                  </Form.Group>
+                  {$imagePreview}
               </Col>
+              <Form.Group className="margin btn-center">
+                      <button className="btn btn-login btn-lg margin">Register Account</button> 
+              </Form.Group>
           </Row>
         </Form>
     </Container>
