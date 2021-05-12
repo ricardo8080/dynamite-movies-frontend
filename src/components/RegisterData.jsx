@@ -26,7 +26,7 @@ class RegisterData extends Component {
           city: '',
           countryResidence: '',
           gender: '',
-          gmail: '',
+          email: '',
           birthday: moment().format('YYYY-MM-DD'),
           accountImage: '',
           securityQuestion: questions[0].label,
@@ -56,7 +56,8 @@ class RegisterData extends Component {
           gender: this.state.gender,
           accountPicture: "picture",
           securityQuestion: this.state.securityQuestion,
-          securityAnswer:this.state.securityAnswer
+          securityAnswer:this.state.securityAnswer,
+          email: this.state.email
         }
 
         await axios.post( `http://localhost:5000/account/Register`, user, { 
@@ -147,7 +148,8 @@ class RegisterData extends Component {
               this.state.countryResidence !== '' &&
               this.state.gender !== '' &&
               this.securityQuestion !== '' &&
-              this.state.securityAnswer !== ''
+              this.state.securityAnswer !== '' &&
+              this.state.email != ''
     }
     render() {
       return (
@@ -246,7 +248,7 @@ class RegisterData extends Component {
                         <div>
                             <span className="input-group-text"><i><SiGmail className="icon-color"/></i></span>
                         </div>
-                        <input type="text" className="form-control" name="gmail" placeholder="Gmail" onChange={this.changeHandler} required/>
+                        <input type="text" className="form-control" name="email" placeholder="Gmail" onChange={this.changeHandler} required/>
                         <Form.Control.Feedback type="invalid">Password is obligated</Form.Control.Feedback>
                     </Form.Group>
               
