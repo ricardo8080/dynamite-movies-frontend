@@ -4,8 +4,9 @@ import { BsPeopleCircle } from "react-icons/bs";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { MdLocationCity } from "react-icons/md";
 import { GiModernCity } from "react-icons/gi";
-//import "./loginPage.css";
+import axios from "axios";
 import profile from "../assets/images/profile.png"
+import moment from "moment";
 import "../pages/loginPage.css"
 
 class RegisterData extends Component {
@@ -14,32 +15,80 @@ class RegisterData extends Component {
       this.state = {
         imageProfile: '',
         imagePreviewUrl: profile,
-        username: '',
-        password: '',
-        confirmPassword: '',
-        birthday: '',
-        city: '',
-        gender: '',
+          username: '',
+          password: '',
+          confirmPassword: '',
+          city: '',
+          countryResidence: '',
+          gender: '',
+          birthday: '',
+          accountImage: ''
       };
-      
-      this._handleImageChange = this._handleImageChange.bind(this);
+      this.handleImageChange = this.handleImageChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.changeHandler = this.changeHandler.bind(this);
+      this.changeCheckHandler = this.changeCheckHandler.bind(this);
     }
+
+
+
+    async postAccount(){
+
+  /*    const data = new FormData();
+      data.append("username", 'raphael');
+      data.append("password", "sasa");
+      data.append("birthday", "14/56/5");
+      data.append("age",34);
+      data.append("city","adv");
+      data.append("countryResidence","233");
+      data.append("gender","e");
+      data.append("accountPicture","dsd");
+      data.append("securityQuestion","ds");
+      data.append("securityAnswer","233");*/
+
+      try {
+
+       const user = {
+          username: "dss",
+          password: "ddsd",
+          birthday: "1999-18-11T04:00:00.000Z",
+          age: 20,
+          city: "dsds",
+          countryResidence: "dss",
+          gender: "sdsd",
+          accountPicture: "",
+          securityQuestion: "What is your first pet name?",
+          securityAnswer:"A"
+        }
+
+        await axios.post( `http://localhost:5000/account/Register`,user, { 
+          headers: { "Content-Type": "application/json", "username":"ss"}}
+
+        ) .then(res => {
+          console.log(res);
+        })
+
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
     handleSubmit(e) {
-      const formData = new FormData(e.target);
         e.preventDefault();
-
-        for (let [key, value] of formData.entries()) {
-          if (value !== '') {
-            console.log(key, value);
-          } else {
-            console.log(key, "esta vacio");
-          }
-        }
+        this.postAccount();
     }
-  
-    _handleImageChange(e) {
+    changeHandler(e) {
+      let key = e.target.name;
+      let val = e.target.value;
+      this.setState({[key]: val});
+    }
+    changeCheckHandler(e) {
+      let key = e.target.name;
+      let id = e.target.id;
+      this.setState({[key]: id});
+    }
+    
+    handleImageChange(e) {
       e.preventDefault();
   
       let reader = new FileReader();
@@ -53,8 +102,16 @@ class RegisterData extends Component {
       }
   
       reader.readAsDataURL(imageProfile)
+      this.changeHandler(e);
     }
 
+    changeFormatDatetoISO(date1) {
+      var date = new Date(date1);
+      return date.toISOString();
+    }
+    getAge(date) {
+      return moment().diff(moment(date, 'YYYYMMDD'), 'years');
+    }
     render() {
       let {imagePreviewUrl} = this.state;
       let $imagePreview = null;
@@ -74,7 +131,7 @@ class RegisterData extends Component {
                           <div>
                               <span className="input-group-text"><i><BsPeopleCircle className="icon-color"/></i></span>
                           </div>
-                          <input type="text" className="form-control" name="username" placeholder="Username" required/>
+                          <input type="text" className="form-control" name="username" placeholder="Username" onChange={this.changeHandler}/>
                           <Form.Control.Feedback type="invalid">Mal</Form.Control.Feedback>
                       </Form.Group>
                   
@@ -83,7 +140,7 @@ class RegisterData extends Component {
                           <div>
                               <span className="input-group-text"><i><RiLockPasswordFill className="icon-color"/></i></span>
                           </div>
-                          <input type="password" className="form-control" name="password" placeholder="Password"/>
+                          <input type="password" className="form-control" name="password" placeholder="Password" onChange={this.changeHandler}/>
                           
                       </Form.Group>
                       <strong><Form.Label className="loginLabels">Confirm Password:</Form.Label></strong>
@@ -91,7 +148,7 @@ class RegisterData extends Component {
                           <div>
                               <span className="input-group-text"><i><RiLockPasswordFill className="icon-color"/></i></span>
                           </div>
-                          <input type="password" className="form-control" name="confirmPassword" placeholder="Confirm Password"/>
+                          <input type="password" className="form-control" name="confirmPassword" placeholder="Confirm Password" onChange={this.changeHandler}/>
                           
                       </Form.Group>
                       <strong><Form.Label className="loginLabels">Birthday:</Form.Label></strong> 
@@ -99,14 +156,14 @@ class RegisterData extends Component {
                           controlId="formDate"
                           className="input-group form-group"
                       > 
-                          <Form.Control type="date" name="birthday" className="register--form-control" />
+                          <Form.Control type="date" name="birthday" className="register--form-control"  onChange={this.changeHandler} />
                       </Form.Group>
                       <strong><Form.Label className="loginLabels">City:</Form.Label></strong>
                       <Form.Group className="input-group form-group">
                           <div>
                               <span className="input-group-text"><i><MdLocationCity className="icon-color"/></i></span>
                           </div>
-                          <input type="text" className="form-control" name="city" placeholder="City"/>
+                          <input type="text" className="form-control" name="city" placeholder="City" onChange={this.changeHandler}/>
                           
                       </Form.Group>
                       <strong><Form.Label className="loginLabels">Country of Residence:</Form.Label></strong>
@@ -114,20 +171,20 @@ class RegisterData extends Component {
                           <div>
                               <span className="input-group-text"><i><GiModernCity className="icon-color"/></i></span>
                           </div>
-                          <input type="text" className="form-control" name="registerResidence" placeholder="Country of Residence"/>
+                          <input type="text" className="form-control" name="countryResidence" placeholder="Country of Residence" onChange={this.changeHandler}/>
                           
                       </Form.Group>
                       <strong><Form.Label className="loginLabels">Gender:</Form.Label></strong>
-                      <Form.Group>
-                          <Form.Check inline label="Female" name="gender" className="loginLabels" type="radio" />
-                          <Form.Check inline label="Male" name="gender" className="loginLabels" type="radio"/>
-                          <Form.Check inline label="None" name="gender" className="loginLabels" type="radio" />
+                      <Form.Group onChange={this.changeCheckHandler}>
+                          <Form.Check inline label="Female" id="F" name="gender" className="loginLabels" type="radio" />
+                          <Form.Check inline label="Male" id="M" name="gender" className="loginLabels" type="radio"/>
+                          <Form.Check inline label="None" id="N"  name="gender" className="loginLabels" type="radio" />
                       </Form.Group>
                   </Form.Group>
               </Col>
               <Col className="divRegister">
                     <div >
-                      <input type="file" className="form-control marginImage" name="accountImage" onChange={this._handleImageChange} />
+                      <input type="file" className="form-control marginImage" name="accountImage" onChange={this.handleImageChange} />
                     </div>
               {$imagePreview}
                   <Form.Group className="margin btn-center">
