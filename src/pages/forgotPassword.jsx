@@ -29,10 +29,10 @@ export const ForgotPassword = () => {
                securityAnswer:answer
              }
      
-             await axios.put( `http://localhost:5000/account/Forgot-Password`,user, { 
-               headers: { "Content-Type": "application/json", "username":"ss"}}
+            await axios.put( "http://localhost:5000/account/Forgot-Password", user, { 
+               headers: { "Content-Type": "application/json", "username":"ss" } }
      
-             ) .then(res => {
+             ).then(res => {
                console.log(res);
              })
      
@@ -51,7 +51,7 @@ export const ForgotPassword = () => {
        }
        setValidated(true);
 
-       if(username != "" && newPassword !== "" && newPasswordConfirm !== "" && question !== "" && answer !== "") {
+       if(username !== "" && newPassword !== "" && newPasswordConfirm !== "" && question !== "" && answer !== "") {
            if (newPassword === newPasswordConfirm ) {
             updatePassword();
             window.location.replace("/");

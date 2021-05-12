@@ -62,10 +62,10 @@ class RegisterData extends Component {
 
         if (user.age >= 13 && user.age <= 150 ) {
 
-          await axios.post( `http://localhost:5000/account/Register`, user, { 
+          await axios.post( "http://localhost:5000/account/Register", user, { 
             headers: { "Content-Type": "application/json"}}
 
-          ) .then(res => {
+          ).then(res => {
             console.log(res);
           })
         } else {
@@ -154,7 +154,7 @@ class RegisterData extends Component {
               this.state.gender !== '' &&
               this.securityQuestion !== '' &&
               this.state.securityAnswer !== '' &&
-              this.state.email != ''
+              this.state.email !== ''
     }
     render() {
       return (
