@@ -1,32 +1,10 @@
 import React, { Component } from "react";
 import { Form, Col, Row } from "react-bootstrap";
-import Select, { components } from 'react-select';
 import "../style.css";
-
-const IndicatorsContainer = props => {
-  return (
-    <div style={{ background: "transparent", color: 'white' }}>
-      <components.IndicatorsContainer {...props} />
-    </div>
-  );
-};
+import MultiSelectComponent from "./MultiSelect";
 class SearchForm extends Component {
   render() {
-    const optionsForGenres = [
-      { value: 'action', label: 'Action' },
-      { value: 'animation', label: 'Animation' },
-      { value: 'documentary', label: 'Documentary' },
-      { value: 'drama', label: 'Drama' },
-      { value: 'educational', label: 'Educational' },
-      { value: 'fantasy', label: 'Fantasy' },
-      { value: 'historical', label: 'Historical drama' },
-      { value: 'horror', label: 'Horror' },
-      { value: 'musical', label: 'Musical' },
-      { value: 'romantic', label: 'Romantic' },
-      { value: 'thriller', label: 'Thriller' },
-    ];
-    const optionsForCountries = ["", "China", "Egypt", "France", "Hong Kong", "India", "Indonesia", "Iran", "Japan",
-      "Korea", "Pakistan", "Poland", "Turkey", "United Kingdom", "United States"];
+    const optionsForCountries = ["", "China", "India", "Indonesia", "Japan", "Korea", "Turkey", "United Kingdom", "United States"];
     return (
       <div >
         <Form.Group
@@ -56,58 +34,7 @@ class SearchForm extends Component {
             Genres
             </Form.Label>
           <Col sm="6">
-            <Select
-              closeMenuOnSelect={false}
-              isMulti
-              name="genres"
-              theme={theme => ({
-                ...theme,
-                colors: {
-                  neutral0: '#07010d',
-                  primary25: 'white',
-                },
-              })}
-              styles={{
-                option: (styles, { isFocused, isSelected }) => {
-                  return {
-                    ...styles,
-                    backgroundColor: isFocused
-                      ? '#a89bc5'
-                      : isSelected
-                        ? '#291f41'
-                        : 'null',
-                    color: 'white',
-                  };
-                },
-                multiValue: (styles) => {
-                  return {
-                    ...styles,
-                    backgroundColor: '#a89bc5',
-                    color: 'white',
-                  };
-                },
-                valueContainer: base => ({
-                  ...base,
-                  background: '#07010d',
-                  color: 'white',
-                }),
-                multiValueLabel: (styles) => ({
-                  ...styles,
-                  color: 'white',
-                }),
-                multiValueRemove: (styles) => ({
-                  ...styles,
-                  color: 'white',
-                  ':hover': {
-                    backgroundColor: 'red',
-                    color: 'white',
-                  },
-                }),
-              }}
-              components={{ IndicatorsContainer }}
-              isSearchable
-              options={optionsForGenres}
-            />
+            <MultiSelectComponent />
           </Col>
         </Form.Group>
         <Form.Group

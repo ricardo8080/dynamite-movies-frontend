@@ -1,0 +1,13 @@
+[
+  { "value" : "action", "label": "Action" },
+  { "value": "animation", "label": "Animation" },
+  { "value": "documentary", "label": "Documentary" },
+  { "value": "drama", "label": "Drama" },
+  { "value": "educational", "label": "Educational" },
+  { "value": "fantasy", "label": "Fantasy" },
+  { "value": "historical", "label": "Historical drama" },
+  { "value": "horror", "label": "Horror" },
+  { "value": "musical", "label": "Musical" },
+  { "value": "romantic", "label": "Romantic" },
+  { "value": "thriller", "label": "Thriller" }
+]
