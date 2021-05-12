@@ -1,187 +1,145 @@
 import React, { Component } from "react";
 import { Form, Col, Row } from "react-bootstrap";
-import Select, { components } from 'react-select';
-import "../style.css";
-
-const IndicatorsContainer = props => {
-  return (
-    <div style={{ background: "transparent", color: 'white' }}>
-      <components.IndicatorsContainer {...props} />
-    </div>
-  );
-};
+import moment from 'moment';
+import Select from 'react-select';
+import Genres from "./genres.json";
+import { MultiStyle, IndicatorsContainer } from "./MultiSelect";
+import MovieList from "../movie/MovieList";
 class SearchForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedCountry: '',
+      selectedGenre: null,
+      selected: [],
+      dateTo: moment(new Date().toISOString().toString().split('T')[0]).format('YYYY-MM-DD'),
+      dateFrom: '1940-01-01',
+      rb: 'All',
+    };
+    // console.log(this.props.nameMovie);
+    this.handleChange = this.handleChange.bind(this);
+    this.changeRadioButtons = this.changeRadioButtons.bind(this);
+  }
+  handleChange(selectedGenre) {
+    this.setState({ selectedGenre });
+    this.setState({ selected: selectedGenre });
+  }
+  changeRadioButtons(event) {
+    this.setState({ rb: event.target.id });
+    let newDate;
+    switch (event.target.id) {
+      case "Today":
+        newDate = moment(new Date().toISOString().toString().split('T')[0]).format('YYYY-MM-DD');
+        break;
+      case "LastWeek":
+        newDate = moment().subtract(7, 'days');
+        break;
+      case "LastMonth":
+        newDate = moment().subtract(1, 'months');
+        break;
+      case "LastYear":
+        newDate = moment().subtract(1, 'years');
+        break;
+      case "All":
+        newDate = "1940-01-01";
+        break;
+    }
+    this.setState({
+      dateFrom: moment(newDate).format('YYYY-MM-DD'),
+    });
+
+  }
   render() {
-    const optionsForGender = [
-      { value: 'action', label: 'Action' },
-      { value: 'animation', label: 'Animation' },
-      { value: 'documentary', label: 'Documentary' },
-      { value: 'drama', label: 'Drama' },
-      { value: 'educational', label: 'Educational' },
-      { value: 'fantasy', label: 'Fantasy' },
-      { value: 'historical', label: 'Historical drama' },
-      { value: 'horror', label: 'Horror' },
-      { value: 'musical', label: 'Musical' },
-      { value: 'romantic', label: 'Romantic' },
-      { value: 'thriller', label: 'Thriller' },
-    ];
-    const optionsForCountries = ["", "China", "Egypt", "France", "Hong Kong", "India", "Indonesia", "Iran", "Japan",
-      "Korea", "Pakistan", "Poland", "Turkey", "United Kingdom", "United States"];
+    const optionsForCountries = ["", "China", "India", "Indonesia", "Japan", "Korea", "Turkey", "United Kingdom", "United States"];
     return (
-      <div >
-        <Form.Group
-          as={Row}
-          controlId="formCountry"
-          className="search-form--form-group"
-        >
-          <Form.Label column sm="2" className="search-form--label">
-            Country
-            </Form.Label>
-          <Col sm="6">
-            <Form.Control as="select" className="search-form--form-control">
-              {
-                optionsForCountries.map((option, index) => {
-                  return (<option key={index} value={option}>{option}</option>)
-                })
-              }
-            </Form.Control>
-          </Col>
-        </Form.Group>
-        <Form.Group
-          as={Row}
-          controlId="formGender"
-          className="search-form--form-group"
-        >
-          <Form.Label column sm="2" className="search-form--label">
-            Gender
-            </Form.Label>
-          <Col sm="6">
-            <Select
-              closeMenuOnSelect={false}
-              isMulti
-              name="gender"
-              theme={theme => ({
-                ...theme,
-                colors: {
-                  neutral0: '#07010d',
-                  primary25: 'white',
-                },
-              })}
-              styles={{
-                option: (styles, { isFocused, isSelected }) => {
-                  return {
-                    ...styles,
-                    backgroundColor: isFocused
-                      ? '#a89bc5'
-                      : isSelected
-                        ? '#291f41'
-                        : 'null',
-                    color: 'white',
-                  };
-                },
-                multiValue: (styles) => {
-                  return {
-                    ...styles,
-                    backgroundColor: '#a89bc5',
-                    color: 'white',
-                  };
-                },
-                valueContainer: base => ({
-                  ...base,
-                  background: '#07010d',
-                  color: 'white',
-                }),
-                multiValueLabel: (styles) => ({
-                  ...styles,
-                  color: 'white',
-                }),
-                multiValueRemove: (styles) => ({
-                  ...styles,
-                  color: 'white',
-                  ':hover': {
-                    backgroundColor: 'red',
-                    color: 'white',
-                  },
-                }),
-              }}
-              components={{ IndicatorsContainer }}
-              isSearchable
-              options={optionsForGender}
-            />
-          </Col>
-        </Form.Group>
-        <Form.Group
-          as={Row}
-          controlId="formDate"
-          className="search-form--form-group"
-        >
-          <Form.Label column sm="1" className="search-form--label">
-            Date
-            </Form.Label>
-          <Form.Label column sm="1" className="search-form--label">
-            Start Date
-            </Form.Label>
-          <Col sm="3">
-            <Form.Control type="date" name='start_date' className="search-form--form-control" />
-          </Col>
-          <Form.Label column sm="1" className="search-form--label">
-            End Date
-            </Form.Label>
-          <Col sm="3">
-            <Form.Control type="date" name='end_date' className="search-form--form-control" />
-          </Col>
-        </Form.Group>
-        <Form.Group as={Row}>
-          <Row>
-            <Col sm={2}>
-              <Form.Check
-                type="radio"
-                label="Today"
-                name="searchRadios"
-                id="searchRadios1"
-                className="search-form--label"
-              />
-            </Col>
-            <Col sm={2}>
-              <Form.Check
-                type="radio"
-                label="Last Week"
-                name="searchRadios"
-                id="searchRadios2"
-                className="search-form--label"
-              />
-            </Col>
-            <Col sm={2}>
-              <Form.Check
-                type="radio"
-                label="Last Month"
-                name="searchRadios"
-                id="searchRadios3"
-                className="search-form--label"
-              />
-            </Col>
-            <Col sm={2}>
-              <Form.Check
-                type="radio"
-                label="Last Year"
-                name="searchRadios"
-                id="searchRadios4"
-                className="search-form--label"
-              />
-            </Col>
-            <Col sm={2}>
-              <Form.Check
-                type="radio"
-                label="All"
-                name="searchRadios"
-                id="searchRadios5"
-                className="search-form--label"
-                defaultChecked="true"
-              />
-            </Col>
-          </Row>
-        </Form.Group>
-      </div >
+      <div>
+        <div className="search-form--content" >
+          <Form className="search-form--form">
+            <Form.Group as={Row} controlId="formCountry" className="search-form--form-group" >
+              <Form.Label column sm="2" className="search-form--label">Country</Form.Label>
+              <Col sm="6">
+                <Form.Control as="select" className="search-form--form-control"
+                  onChange={(e) => this.setState({ selectedCountry: e.target.value })} defaultValue={optionsForCountries[0]}>
+                  {
+                    optionsForCountries.map((option, index) => {
+                      return (<option key={index} value={option}>{option}</option>)
+                    })
+                  }
+                </Form.Control>
+              </Col>
+            </Form.Group>
+            <Form.Group as={Row} controlId="formGenres" className="search-form--form-group" >
+              <Form.Label column sm="2" className="search-form--label"> Genres </Form.Label>
+              <Col sm="6">
+                <Select
+                  closeMenuOnSelect={false}
+                  isMulti
+                  name="genres"
+                  theme={theme => ({
+                    ...theme,
+                    colors: {
+                      neutral0: '#07010d',
+                      primary25: 'white',
+                    },
+                  })}
+                  styles={MultiStyle}
+                  components={{ IndicatorsContainer }}
+                  isSearchable
+                  options={Genres}
+                  value={this.state.selectedGenre}
+                  onChange={this.handleChange}
+                />
+              </Col>
+            </Form.Group>
+            <Form.Group as={Row} controlId="formDate" className="search-form--form-group" >
+              <Form.Label column sm="1" className="search-form--label">Release Date</Form.Label>
+              <Form.Label column sm="1" className="search-form--label"> Start Date</Form.Label>
+              <Col sm="3">
+                <Form.Control type="date" name='start_date' className="search-form--form-control" value={this.state.dateFrom}
+                  onChange={(e) => this.setState({ dateFrom: e.target.value })} />
+              </Col>
+              <Form.Label column sm="1" className="search-form--label">End Date</Form.Label>
+              <Col sm="3">
+                <Form.Control type="date" name='end_date' className="search-form--form-control" value={this.state.dateTo}
+                  onChange={(e) => this.setState({ dateTo: e.target.value })} />
+              </Col>
+            </Form.Group>
+            <Form.Group as={Row}>
+              <Col sm={2}>
+                <Form.Check type="radio" label="Today" name="rb" id="Today"
+                  className="search-form--label" onChange={(ev) => this.changeRadioButtons(ev)} />
+              </Col>
+              <Col sm={2}>
+                <Form.Check type="radio" label="Last Week" name="rb" id="LastWeek"
+                  className="search-form--label" onChange={(ev) => this.changeRadioButtons(ev)} />
+              </Col>
+              <Col sm={2}>
+                <Form.Check type="radio" label="Last Month" name="rb" id="LastMonth"
+                  className="search-form--label" onChange={(ev) => this.changeRadioButtons(ev)} />
+              </Col>
+              <Col sm={2}>
+                <Form.Check type="radio" label="Last Year" name="rb" id="LastYear"
+                  className="search-form--label" onChange={(ev) => this.changeRadioButtons(ev)} />
+              </Col>
+              <Col sm={2}>
+                <Form.Check type="radio" label="All" name="rb" id="All"
+                  className="search-form--label" onChange={(ev) => this.changeRadioButtons(ev)} defaultChecked="true" />
+              </Col>
+            </Form.Group>
+          </Form>
+        </div >
+
+        <div>
+          <MovieList
+            nameMovie={this.props.nameMovie}
+            filterEnabled={true}
+            country={this.state.selectedCountry}
+            genres={this.state.selected}
+            dateTo={this.state.dateTo}
+            dateFrom={this.state.dateFrom}
+          />
+        </div>
+      </div>
     );
   }
 }

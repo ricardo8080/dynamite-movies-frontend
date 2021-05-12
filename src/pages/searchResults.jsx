@@ -1,6 +1,4 @@
-/*index.jsx*/
 import React from "react";
-import MovieList from "../components/movie/MovieList";
 import { AuthButton } from '../AuthenthicationFiles/authFiles';
 import { Link } from "react-router-dom";
 import SearchForm from "../components/search/SearchForm";
@@ -18,7 +16,6 @@ export const SearchResults = () => {
       <AuthButton />
       <div>
         <SearchForm />
-        <MovieList />
       </div>
     </div>
   );
