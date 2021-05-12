@@ -42,16 +42,16 @@ class RegisterData extends Component {
       try {
 
        const user = {
-          username: "dss",
-          password: "ddsd",
-          birthday: "1999-18-11T04:00:00.000Z",
-          age: 20,
-          city: "dsds",
-          countryResidence: "dss",
-          gender: "sdsd",
-          accountPicture: "",
-          securityQuestion: "What is your first pet name?",
-          securityAnswer:"A"
+          username: this.state.username,
+          password: this.state.password,
+          birthday: this.changeFormatDatetoISO(this.state.birthday),
+          age: this.getAge(this.state.birthday),
+          city: this.city,
+          countryResidence: this.state.countryResidence,
+          gender: this.state.gender,
+          accountPicture: Object.create(this.state.imageProfile),
+          securityQuestion: this.state.securityQuestion,
+          securityAnswer:this.state.securityAnswer
         }
 
         await axios.post( `http://localhost:5000/account/Register`,user, { 
@@ -68,7 +68,7 @@ class RegisterData extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        //this.postAccount();
+        this.postAccount();
         console.log(this.state);
       
     }
@@ -176,7 +176,7 @@ class RegisterData extends Component {
                       <Form.Group onChange={this.changeCheckHandler}>
                           <Form.Check inline label="Female" id="F" name="gender" className="loginLabels" type="radio" />
                           <Form.Check inline label="Male" id="M" name="gender" className="loginLabels" type="radio"/>
-                          <Form.Check inline label="None" id="N"  name="gender" className="loginLabels" type="radio" />
+                          <Form.Check inline label="None" id="N/A"  name="gender" className="loginLabels" type="radio" />
                       </Form.Group>
                   </Form.Group>
               </Col>
