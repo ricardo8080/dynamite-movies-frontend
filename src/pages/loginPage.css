@@ -8,16 +8,21 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    max-width: 100%;
-    max-width: 100%;
+    
+  }
+  .centerTitle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .backgroundForm {
     
     background-image:linear-gradient(45deg,rgba(229, 217, 240, 0.87), #cecae2d5, #927fbfde,#432e6b);
     opacity:initial;
-    width: 110vh;
+    width: 100vh;
     border-radius: 3vh;
   }
+
 
   .divLogin {
     margin: 10% 5% 10% 5%;
@@ -31,9 +36,14 @@
 
   }
   .margin {
-      margin: 10px;
+      margin: 8px;
   }
-
+  .marginLeft {
+    margin-left: 15px;
+  }
+  .marginTop {
+    margin-top: 15px;
+  }
   .loginLabels {
     color: #3c2b58;   
   }
@@ -54,6 +64,10 @@
     color: #351b68 !important;
   }
 
+  .link-back {
+    color: #4f3b78 !important; 
+    font-size: 250%;
+  }
   .form-control:focus {
     border-color: #9c8dbb !important;
     
