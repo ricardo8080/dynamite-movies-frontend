@@ -66,7 +66,7 @@ export const LoginPage = () => {
                 <Col  sm="5" className="divLogin">
                     <h1>Sign In</h1>
                     <Form.Group className="margin">
-                        <strong><Form.Label className="loginLabels">Username:</Form.Label></strong>
+                        <strong><Form.Label className="form-labels">Username:</Form.Label></strong>
                         <Form.Group className="input-group form-group">
                             <div>
                                 <span className="input-group-text"><i><BsPeopleCircle className="icon-color"/></i></span>
@@ -75,7 +75,7 @@ export const LoginPage = () => {
                             <Form.Control.Feedback type="invalid">Username required</Form.Control.Feedback>
                         </Form.Group>
                 
-                        <strong><Form.Label className="loginLabels">Password:</Form.Label></strong>
+                        <strong><Form.Label className="form-labels">Password:</Form.Label></strong>
                         <Form.Group className="input-group form-group">
                             <div>
                                 <span className="input-group-text"><i><RiLockPasswordFill className="icon-color"/></i></span>
@@ -91,7 +91,7 @@ export const LoginPage = () => {
                     </Form.Group>
                     <Form.Group className="margin">
                         <strong>
-                            <div className="loginLabels d-flex justify-content-center" >Don't have an account?
+                            <div className="form-labels d-flex justify-content-center" >Don't have an account?
                                 <Link to="/signup" className="link-color" style={{ textDecoration: 'none' }}>
                                 Sign up
                                 </Link>

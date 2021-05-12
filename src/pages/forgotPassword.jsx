@@ -69,7 +69,7 @@ export const ForgotPassword = () => {
             </Row>
             <Row className="margin">
               <Col className="divRegister">
-                    <strong><Form.Label className="loginLabels">Username:</Form.Label></strong>
+                    <strong><Form.Label className="form-labels">Username:</Form.Label></strong>
                     <Form.Group className="input-group form-group">
                         <div>
                             <span className="input-group-text"><i><BsPeopleCircle className="icon-color"/></i></span>
@@ -77,7 +77,7 @@ export const ForgotPassword = () => {
                         <input type="text" className="form-control" name="username" placeholder="Username" onChange={event => setUsername(event.target.value)} required/>
                         <Form.Control.Feedback type="invalid">Username required</Form.Control.Feedback>
                     </Form.Group>
-                    <strong><Form.Label className="loginLabels">Security Question:</Form.Label></strong>
+                    <strong><Form.Label className="form-labels">Security Question:</Form.Label></strong>
                     <Form.Group className="input-group form-group">
                       <div>
                         <span className="input-group-text"><i><BsFillQuestionCircleFill className="icon-color"/></i></span>
@@ -90,7 +90,7 @@ export const ForgotPassword = () => {
                       </select>
                       <Form.Control.Feedback type="invalid">Security question required</Form.Control.Feedback>
                   </Form.Group> 
-                    <strong><Form.Label className="loginLabels">Security Answer:</Form.Label></strong>
+                    <strong><Form.Label className="form-labels">Security Answer:</Form.Label></strong>
                     <Form.Group className="input-group form-group">
                         <div>
                             <span className="input-group-text"><i><RiQuestionAnswerFill className="icon-color"/></i></span>
@@ -99,7 +99,7 @@ export const ForgotPassword = () => {
                         <Form.Control.Feedback type="invalid">Security answer required</Form.Control.Feedback>
 
                     </Form.Group >
-                    <strong><Form.Label className="loginLabels">Password:</Form.Label></strong>
+                    <strong><Form.Label className="form-labels">Password:</Form.Label></strong>
                       <Form.Group className="input-group form-group">
                           <div>
                               <span className="input-group-text"><i><RiLockPasswordFill className="icon-color"/></i></span>
@@ -107,7 +107,7 @@ export const ForgotPassword = () => {
                           <input type="password" className="form-control" name="password" placeholder="Password" onChange={event => setNewPassword(event.target.value)} required/>
                           <Form.Control.Feedback type="invalid">Password required</Form.Control.Feedback>
                       </Form.Group>
-                      <strong><Form.Label className="loginLabels">Confirm Password:</Form.Label></strong>
+                      <strong><Form.Label className="form-labels">Confirm Password:</Form.Label></strong>
                       <Form.Group className="input-group form-group">
                           <div>
                               <span className="input-group-text"><i><RiLockPasswordFill className="icon-color"/></i></span>

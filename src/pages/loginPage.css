@@ -19,6 +19,11 @@
     align-items: center;
     justify-content: center;
   }
+  .leftTitle{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+  }
   .backgroundForm {
     
     background-image:linear-gradient(45deg,#000000de,#583e8a);
@@ -52,9 +57,13 @@
   .marginTop {
     margin-top: 8px;
   }
-  .loginLabels {
+  .form-labels {
     color: #9a8caf;  
     margin-top: 2%; 
+  }
+  .alingLabel {
+    color: #9a8caf;  
+    margin-top: 4%; 
   }
   .register--form-control {
     background-image: white;
@@ -110,6 +119,11 @@
     margin-left: 40px;
     background-color: rgb(243, 77, 77);
     color: white;
+  }
+  .alertSignUp {
+    background-color: rgb(243, 77, 77);
+    color: white;
+    width: 90%;
   }
    /*
     #c4bbf0 mas claro
