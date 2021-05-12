@@ -25,10 +25,11 @@ class RegisterData extends Component {
           countryResidence: '',
           gender: '',
           gmail: '',
-          birthday: '',
+          birthday: moment().format('YYYY-MM-DD'),
           accountImage: '',
           securityQuestion: questions[0].label,
           securityAnswer:"",
+          validated: false
       };
       this.handleImageChange = this.handleImageChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
@@ -51,7 +52,7 @@ class RegisterData extends Component {
           city: this.city,
           countryResidence: this.state.countryResidence,
           gender: this.state.gender,
-          accountPicture: "",
+          accountPicture: "picture",
           securityQuestion: this.state.securityQuestion,
           securityAnswer:this.state.securityAnswer
         }
@@ -69,9 +70,20 @@ class RegisterData extends Component {
     };
 
     handleSubmit(e) {
-        e.preventDefault();
+    const form = e.currentTarget;
+    e.preventDefault();
+
+    if (form.checkValidity() === false) {
+      e.stopPropagation();
+    }
+      this.setState({ validated: true });
+      if (this.state.password !== this.state.confirmPassword || this.validationInputs())  {
+        console.log("vacio");
+        console.log(this.state.birthday);
+      } else {
         this.postAccount();
-       // window.location.replace("/");
+     // window.location.replace("/");
+      }
       
     }
     changeHandler(e) {
@@ -83,6 +95,8 @@ class RegisterData extends Component {
       let key = e.target.name;
       let id = e.target.id;
       this.setState({[key]: id});
+
+
     }
     handleChangeQuestions(e) {
       this.setState({ securityQuestion: e.target.value });
@@ -110,12 +124,27 @@ class RegisterData extends Component {
       return date.toISOString();
     }
     getAge(date) {
-      return moment().diff(moment(date, 'YYYYMMDD'), 'years');
+      if (date !== '') {
+        return moment().diff(moment(Date.now(), 'YYYYMMDD'), 'years');
+      } else{
+        return moment().diff(moment(date, 'YYYYMMDD'), 'years');
+      }
+    }
+    validationInputs() {
+      return this.state.username !== '' || 
+             this.state.password !== '' || 
+             this.state.confirmPassword !== '' || 
+             this.state.birthday !== '' ||
+             this.state.city !== '' ||
+             this.state.countryResidence !== '' ||
+             this.state.gender !== '' ||
+             this.securityQuestion !== '' ||
+             this.state.securityAnswer !== ''
     }
     render() {
       return (
         <Container className="centerForm">
-        <Form  onSubmit={this.handleSubmit}>
+        <Form   noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
             <Row className="backgroundForm">
               <Col className="divRegister">
                   <h1>Sign In</h1>
@@ -125,55 +154,58 @@ class RegisterData extends Component {
                           <div>
                               <span className="input-group-text"><i><BsPeopleCircle className="icon-color"/></i></span>
                           </div>
-                          <input type="text" className="form-control" name="username" placeholder="Username" onChange={this.changeHandler}/>
-                          <Form.Control.Feedback type="invalid">Mal</Form.Control.Feedback>
+                          <input type="text" className="form-control" name="username" placeholder="Username" onChange={this.changeHandler} required/>
+                          <Form.Control.Feedback type="invalid">Username is obligated</Form.Control.Feedback>
                       </Form.Group>
-                  
                       <strong><Form.Label className="loginLabels">Password:</Form.Label></strong>
                       <Form.Group className="input-group form-group">
                           <div>
                               <span className="input-group-text"><i><RiLockPasswordFill className="icon-color"/></i></span>
                           </div>
-                          <input type="password" className="form-control" name="password" placeholder="Password" onChange={this.changeHandler}/>
-                          
+                          <input type="password" className="form-control" name="password" placeholder="Password" onChange={this.changeHandler} required/>
+                          <Form.Control.Feedback type="invalid">Password is obligated</Form.Control.Feedback>
                       </Form.Group>
                       <strong><Form.Label className="loginLabels">Confirm Password:</Form.Label></strong>
                       <Form.Group className="input-group form-group">
                           <div>
                               <span className="input-group-text"><i><RiLockPasswordFill className="icon-color"/></i></span>
                           </div>
-                          <input type="password" className="form-control" name="confirmPassword" placeholder="Confirm Password" onChange={this.changeHandler}/>
-                          
+                          <input type="password" className="form-control" name="confirmPassword" placeholder="Confirm Password" onChange={this.changeHandler} required/>
+                          <Form.Control.Feedback  type="invalid">Confirm Password is obligated</Form.Control.Feedback>                          
                       </Form.Group>
                       <strong><Form.Label className="loginLabels">Birthday:</Form.Label></strong> 
                       <Form.Group
                           controlId="formDate"
                           className="input-group form-group"
                       > 
-                          <Form.Control type="date" name="birthday" className="register--form-control"  onChange={this.changeHandler} />
+                          <Form.Control type="date" name="birthday" className="register--form-control"  onChange={this.changeHandler}/>
                       </Form.Group>
                       <strong><Form.Label className="loginLabels">City:</Form.Label></strong>
                       <Form.Group className="input-group form-group">
                           <div>
                               <span className="input-group-text"><i><MdLocationCity className="icon-color"/></i></span>
                           </div>
-                          <input type="text" className="form-control" name="city" placeholder="City" onChange={this.changeHandler}/>
-                          
+                          <input type="text" className="form-control" name="city" placeholder="City" onChange={this.changeHandler} required/>
+                          <Form.Control.Feedback type="invalid">City is obligated</Form.Control.Feedback>
                       </Form.Group>
                       <strong><Form.Label className="loginLabels">Country of Residence:</Form.Label></strong>
                       <Form.Group className="input-group form-group">
                           <div>
                               <span className="input-group-text"><i><GiModernCity className="icon-color"/></i></span>
                           </div>
-                          <input type="text" className="form-control" name="countryResidence" placeholder="Country of Residence" onChange={this.changeHandler}/>
-                          
+                          <input type="text" className="form-control" name="countryResidence" placeholder="Country of Residence" onChange={this.changeHandler} required/>
+                          <Form.Control.Feedback type="invalid">Country Residence is obligated</Form.Control.Feedback>                          
                       </Form.Group>
                       <strong><Form.Label className="loginLabels">Gender:</Form.Label></strong>
-                      <Form.Group onChange={this.changeCheckHandler}>
-                          <Form.Check inline label="Female" id="F" name="gender" className="loginLabels" type="radio" />
-                          <Form.Check inline label="Male" id="M" name="gender" className="loginLabels" type="radio"/>
-                          <Form.Check inline label="None" id="N/A"  name="gender" className="loginLabels" type="radio" />
+                      <Form.Group>
+                        <Form.Group onChange={this.changeCheckHandler} required>
+                            <Form.Check inline label="Female" id="F" name="gender" className="loginLabels" type="radio" required />
+                            <Form.Check inline label="Male" id="M" name="gender" className="loginLabels" type="radio" required/>
+                            <Form.Check inline label="None" id="N/A"  name="gender" className="loginLabels" type="radio" required />
+                            <Form.Control.Feedback type="invalid">Select is obligated</Form.Control.Feedback>
+                        </Form.Group>
                       </Form.Group>
+
                   </Form.Group>
               </Col>
               <Col className="divRegister">
@@ -182,29 +214,30 @@ class RegisterData extends Component {
                       <div>
                         <span className="input-group-text"><i><BsFillQuestionCircleFill className="icon-color"/></i></span>
                       </div>
-                      <select className="form-control"  onChange={this.handleChangeQuestions}> 
+                      <select className="form-control"  onChange={this.handleChangeQuestions} required> 
                         {
                           questions.map((option,i) => (
                           <option key={i} name="securityQuestion" value={option.label}>{option.label}</option>
                       ))}
                       </select>
+                      <Form.Control.Feedback type="invalid">Security Question is obligated</Form.Control.Feedback>
                   </Form.Group> 
                   <strong><Form.Label className="loginLabels">Security Answer:</Form.Label></strong>
                   <Form.Group className="input-group form-group">
                       <div>
                           <span className="input-group-text"><i><RiQuestionAnswerFill className="icon-color"/></i></span>
                       </div>
-                      <input type="text" className="form-control" name="securityAnswer" placeholder="Security Answer" onChange={this.changeHandler}/>
-                      
+                      <input type="text" className="form-control" name="securityAnswer" placeholder="Security Answer" onChange={this.changeHandler} required/>
+                      <Form.Control.Feedback type="invalid">Security Answer is obligated</Form.Control.Feedback>
                   </Form.Group>
                   <strong><Form.Label className="loginLabels">Gmail:</Form.Label></strong>
                       <Form.Group className="input-group form-group">
                           <div>
                               <span className="input-group-text"><i><SiGmail className="icon-color"/></i></span>
                           </div>
-                          <input type="text" className="form-control" name="gmail" placeholder="Gmail" onChange={this.changeHandler}/>
-                          
-                  </Form.Group>
+                          <input type="text" className="form-control" name="gmail" placeholder="Gmail" onChange={this.changeHandler} required/>
+                          <Form.Control.Feedback type="invalid">Password is obligated</Form.Control.Feedback>
+                      </Form.Group>
                 
               </Col>
               <Form.Group className="margin btn-center">
