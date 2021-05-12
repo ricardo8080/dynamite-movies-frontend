@@ -56,8 +56,8 @@ class RegisterData extends Component {
           securityAnswer:this.state.securityAnswer
         }
 
-        await axios.post( `http://localhost:5000/account/Register`,user, { 
-          headers: { "Content-Type": "application/json", "username":"ss"}}
+        await axios.post( `http://localhost:5000/account/Register`, user, { 
+          headers: { "Content-Type": "application/json"}}
 
         ) .then(res => {
           console.log(res);
@@ -70,7 +70,7 @@ class RegisterData extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-       // this.postAccount();
+        this.postAccount();
        // window.location.replace("/");
       
     }
