@@ -10,7 +10,7 @@ class SearchForm extends Component {
     this.state = {
       filterEnabledButton: true,
       nameMovie: '',
-      search: false,
+      search: '',
     };
     this.openFilterOptions = this.openFilterOptions.bind(this);
     this.searchMovie = this.searchMovie.bind(this);
@@ -20,8 +20,7 @@ class SearchForm extends Component {
   }
   searchMovie(event) {
     event.preventDefault();
-    this.setState({ search: true });
-    console.log(this.state.nameMovie + "Movie" + this.state.search);
+    this.setState({ search: this.state.nameMovie });
   }
   render() {
     return (
@@ -71,10 +70,8 @@ class SearchForm extends Component {
           </Form>
         </div>
         <div>
-          {this.state.search && this.state.nameMovie !== ''
-            ? <><MovieList nameMovie={this.state.nameMovie} />
-              {this.setState({ search: !this.state.search })}
-            </>
+          {this.state.search !== '' && this.state.nameMovie !== ''
+            ? <MovieList nameMovie={this.state.search} />
             : <></>
           }
         </div>
