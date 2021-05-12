@@ -77,14 +77,20 @@ class RegisterData extends Component {
       e.stopPropagation();
     }
       this.setState({ validated: true });
-      if (this.state.password !== this.state.confirmPassword || this.validationInputs())  {
-        console.log("vacio");
-        console.log(this.state.birthday);
-      } else {
-        this.postAccount();
-     // window.location.replace("/");
-      }
-      
+
+    if (this.validationInputs()) 
+        {
+          if (this.state.password === this.state.confirmPassword)  {
+           
+              this.postAccount();
+              console.log("done");
+            // window.location.replace("/");
+          }  else {
+            console.log("no coincide")
+          }
+        } else {
+          console.log("esta vacio");
+        }
     }
     changeHandler(e) {
       let key = e.target.name;
@@ -131,15 +137,15 @@ class RegisterData extends Component {
       }
     }
     validationInputs() {
-      return this.state.username !== '' || 
-             this.state.password !== '' || 
-             this.state.confirmPassword !== '' || 
-             this.state.birthday !== '' ||
-             this.state.city !== '' ||
-             this.state.countryResidence !== '' ||
-             this.state.gender !== '' ||
-             this.securityQuestion !== '' ||
-             this.state.securityAnswer !== ''
+      return  this.state.username !== '' &&
+              this.state.password !== '' &&
+              this.state.confirmPassword !== '' && 
+              this.state.birthday !== '' &&
+              this.state.city !== '' &&
+              this.state.countryResidence !== '' &&
+              this.state.gender !== '' &&
+              this.securityQuestion !== '' &&
+              this.state.securityAnswer !== ''
     }
     render() {
       return (
