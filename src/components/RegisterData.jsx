@@ -4,6 +4,7 @@ import { BsPeopleCircle } from "react-icons/bs";
 import { RiLockPasswordFill, RiQuestionAnswerFill } from "react-icons/ri";
 import { MdLocationCity } from "react-icons/md";
 import { GiModernCity } from "react-icons/gi";
+import { SiGmail } from "react-icons/si"
 import { BsFillQuestionCircleFill } from "react-icons/bs";
 import axios from "axios";
 import profile from "../assets/images/profile.png"
@@ -23,6 +24,7 @@ class RegisterData extends Component {
           city: '',
           countryResidence: '',
           gender: '',
+          gmail: '',
           birthday: '',
           accountImage: '',
           securityQuestion: questions[0].label,
@@ -68,7 +70,7 @@ class RegisterData extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.postAccount();
+       // this.postAccount();
        // window.location.replace("/");
       
     }
@@ -111,12 +113,6 @@ class RegisterData extends Component {
       return moment().diff(moment(date, 'YYYYMMDD'), 'years');
     }
     render() {
-      let {imagePreviewUrl} = this.state;
-      let $imagePreview = null;
-      if (imagePreviewUrl) {
-        $imagePreview = (<img src={imagePreviewUrl} />);
-      }
-      
       return (
         <Container className="centerForm">
         <Form  onSubmit={this.handleSubmit}>
@@ -201,10 +197,15 @@ class RegisterData extends Component {
                       <input type="text" className="form-control" name="securityAnswer" placeholder="Security Answer" onChange={this.changeHandler}/>
                       
                   </Form.Group>
-                  <Form.Group className="input-group form-group margin" >
-                    <input type="file" className="form-control" name="accountImage" onChange={this.handleImageChange} />
+                  <strong><Form.Label className="loginLabels">Gmail:</Form.Label></strong>
+                      <Form.Group className="input-group form-group">
+                          <div>
+                              <span className="input-group-text"><i><SiGmail className="icon-color"/></i></span>
+                          </div>
+                          <input type="text" className="form-control" name="gmail" placeholder="Gmail" onChange={this.changeHandler}/>
+                          
                   </Form.Group>
-                  {$imagePreview}
+                
               </Col>
               <Form.Group className="margin btn-center">
                       <button className="btn btn-login btn-lg margin">Register Account</button> 
