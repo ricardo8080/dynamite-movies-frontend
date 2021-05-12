@@ -49,7 +49,7 @@ class RegisterData extends Component {
           city: this.city,
           countryResidence: this.state.countryResidence,
           gender: this.state.gender,
-          accountPicture: Object.create(this.state.imageProfile),
+          accountPicture: "",
           securityQuestion: this.state.securityQuestion,
           securityAnswer:this.state.securityAnswer
         }
@@ -69,7 +69,7 @@ class RegisterData extends Component {
     handleSubmit(e) {
         e.preventDefault();
         this.postAccount();
-        console.log(this.state);
+       // window.location.replace("/");
       
     }
     changeHandler(e) {
