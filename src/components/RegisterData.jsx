@@ -154,7 +154,7 @@ class RegisterData extends Component {
         <Container className="centerForm">
         <Form className="backgroundForm" noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
             <Row className="marginTop">
-                <Col className="marginLeft" sm="2"><Link to="/" ><BiArrowBack className="link-back" /></Link></Col>
+                <Col className="marginArrow" sm="2"><Link to="/" ><BiArrowBack className="link-back" /></Link></Col>
                 <Col sm="8"><h1 className="centerTitle">Sign Up</h1></Col> 
             </Row>
             <Row className="margin">
@@ -220,7 +220,7 @@ class RegisterData extends Component {
                 </Form.Group>
             </Col>
             <Col className="divRegister">
-                <strong><Form.Label className="loginLabels margin">Security Question:</Form.Label></strong>
+                <strong><Form.Label className="loginLabels marginTop">Security Question:</Form.Label></strong>
                 <Form.Group className="input-group form-group">
                     <div>
                       <span className="input-group-text"><i><BsFillQuestionCircleFill className="icon-color"/></i></span>
@@ -252,7 +252,7 @@ class RegisterData extends Component {
               
             </Col>
             <Form.Group className="margin btn-center">
-                    <button className="btn btn-login btn-lg margin">Register Account</button> 
+                    <button className="btn btn-login btn-lg margin"><strong>Register Account</strong></button> 
             </Form.Group>
           </Row>
         </Form>

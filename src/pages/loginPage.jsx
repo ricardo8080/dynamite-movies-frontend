@@ -83,7 +83,7 @@ export const LoginPage = () => {
                     </Form.Group>
                     <Form.Group className="d-flex justify-content-center links">
                         <Button type="button" className="btn btn-login btn-lg">
-                            Login
+                            <strong>Login</strong>
                         </Button>
                     </Form.Group>
                     <Form.Group className="margin">

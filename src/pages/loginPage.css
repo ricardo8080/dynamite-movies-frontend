@@ -1,7 +1,11 @@
 
 
-  h1, h5, .icon-color {
-    color:  #4f3b78;
+  h1, h5 {
+    color:  #c4bbf0;
+    margin-top: 10px;
+  }
+  .icon-color {
+    color:  #2f175f;
   }
   .centerForm{
     display: flex;
@@ -17,7 +21,7 @@
   }
   .backgroundForm {
     
-    background-image:linear-gradient(45deg,rgba(229, 217, 240, 0.87), #cecae2d5, #927fbfde,#432e6b);
+    background-image:linear-gradient(45deg,#000000de,#583e8a);
     opacity:initial;
     width: 100vh;
     border-radius: 3vh;
@@ -41,11 +45,16 @@
   .marginLeft {
     margin-left: 15px;
   }
+  .marginArrow {
+    margin-left: 20px;
+    margin-top: 20px;
+  }
   .marginTop {
-    margin-top: 15px;
+    margin-top: 8px;
   }
   .loginLabels {
-    color: #3c2b58;   
+    color: #9a8caf;  
+    margin-top: 2%; 
   }
   .register--form-control {
     background-image: white;
@@ -58,14 +67,14 @@
   }
 
   .link-color {
-    color: #4f3b78 !important; 
+    color: #c4bbf0 !important; 
   }
   .link-color:hover, .link-color:active {
-    color: #351b68 !important;
+    color: #ffffff !important;
   }
 
   .link-back {
-    color: #4f3b78 !important; 
+    color: #9a8caf !important; 
     font-size: 250%;
   }
   .form-control:focus {
@@ -74,8 +83,8 @@
   }
  
   .btn-login {
-    background-color: #4f3b78;
-    color:#FFF;
+    color: #362e44;
+    background-color:#927fbf;
     border-color: #363b4e;
   }
   .btn-center {
@@ -84,10 +93,11 @@
     align-items: center;
   } 
 
-  .btn-login:hover, .btn-login:focus, .btn-login:active, .btn-login.active, .open .dropdown-toggle.btn-login {
-    background-color: #2f175f;
-    color:#FFF;
-    border-color: #31347B;
+  .btn-login:hover, .btn-login:active,.btn-login:focus, .open .dropdown-toggle.btn-login {
+    color: #c4bbf0 !important;
+    background-color: #250e50 !important;
+    border-color: #4f3b78;
+
   }
 
 

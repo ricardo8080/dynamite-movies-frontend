@@ -64,7 +64,7 @@ export const ForgotPassword = () => {
         <Container className="centerForm">
         <Form className="backgroundForm" noValidate validated={validated}>
             <Row className="marginTop">
-                <Col className="marginLeft" sm="2"><Link to="/" ><BiArrowBack className="link-back" /></Link></Col>
+                <Col className="marginArrow" sm="2"><Link to="/" ><BiArrowBack className="link-back" /></Link></Col>
                 <Col sm="8"><h1 className="centerTitle">Forgot Password</h1></Col> 
             </Row>
             <Row className="margin">
@@ -119,7 +119,7 @@ export const ForgotPassword = () => {
                     <Form.Group className="margin btn-center">
                         <Button type="button" className="btn btn-login btn-lg margin"
                                 onClick={handleSubmit}>
-                                Reset password
+                                <strong>Reset password</strong> 
                         </Button>
                     </Form.Group>
                 </Col>
