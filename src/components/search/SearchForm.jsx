@@ -64,7 +64,7 @@ class SearchForm extends Component {
               </Button>
             </div>
             {this.state.filterEnabledButton
-              ? < SearchFilters />
+              ? < SearchFilters nameMovie={this.state.search} enable={this.state.filterEnabledButton} />
               : <h1>Trends/Last Seen</h1>
             }
           </Form>
