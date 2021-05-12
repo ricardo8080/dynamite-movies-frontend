@@ -12,9 +12,9 @@ class SearchForm extends Component {
       selectedCountry: '',
       selectedGenre: null,
       selected: [],
-      dateTo: '',
-      dateFrom: '',
-      rb: null,
+      dateTo: moment(new Date().toISOString().toString().split('T')[0]).format('YYYY-MM-DD'),
+      dateFrom: '1940-01-01',
+      rb: 'All',
     };
     // console.log(this.props.nameMovie);
     this.handleChange = this.handleChange.bind(this);
@@ -46,7 +46,6 @@ class SearchForm extends Component {
     }
     this.setState({
       dateFrom: moment(newDate).format('YYYY-MM-DD'),
-      dateTo: moment(new Date().toISOString().toString().split('T')[0]).format('YYYY-MM-DD')
     });
 
   }
@@ -124,7 +123,7 @@ class SearchForm extends Component {
               </Col>
               <Col sm={2}>
                 <Form.Check type="radio" label="All" name="rb" id="All"
-                  className="search-form--label" onChange={(ev) => this.changeRadioButtons(ev)} />
+                  className="search-form--label" onChange={(ev) => this.changeRadioButtons(ev)} defaultChecked="true" />
               </Col>
             </Form.Group>
           </Form>
@@ -133,8 +132,11 @@ class SearchForm extends Component {
         <div>
           <MovieList
             nameMovie={this.props.nameMovie}
-            filterEnable={true}
-            state={this.state}
+            filterEnabled={true}
+            country={this.state.selectedCountry}
+            genres={this.state.selected}
+            dateTo={this.state.dateTo}
+            dateFrom={this.state.dateFrom}
           />
         </div>
       </div>

@@ -9,14 +9,15 @@ const MovieList = (props) => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     const retrieveData = async () => {
-      if (props.filterEnable) {
+      console.log(props)
+      if (props.filterEnabled) {
         try {
           const { data } = await axios.get(
             "http://localhost:5000/movie/movies"
-            // ,
-            // { "headers": { "nameMovie": props.nameMovie } }
+            // "http://localhost:5000/movie/search-results/filter",
+            // { "headers": { "nameMovie": props.nameMovie, "country": props.country, "genres": "Action" } }
           );
-          // const { data } = await axios.get("https://dynamite--movies-app.herokuapp.com/movie/search-results");
+          // const { data } = await axios.get("https://dynamite--movies-app.herokuapp.com/movie/search-results/filter");
           setMovies(data);
         } catch (err) {
           console.log(err);
@@ -39,7 +40,7 @@ const MovieList = (props) => {
       setMovies([]);
     };
   },
-    [props.nameMovie]
+    [props.nameMovie, props.country, props.genres, props.dateTo, props.dateFrom]
   );
   return (
     <Container>
