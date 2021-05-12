@@ -8,7 +8,7 @@ class SearchForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filterEnabledButton: true,
+      filterEnabledButton: false,
       nameMovie: '',
       search: '',
     };
@@ -63,15 +63,20 @@ class SearchForm extends Component {
                 {this.state.filterEnabledButton ? " Search with Filters " : " Show Trends/Last Seen "}
               </Button>
             </div>
-            {this.state.filterEnabledButton
-              ? < SearchFilters nameMovie={this.state.search} enable={this.state.filterEnabledButton} />
-              : <h1>Trends/Last Seen</h1>
-            }
           </Form>
         </div>
         <div>
+          {this.state.filterEnabledButton
+            ? < SearchFilters nameMovie={this.state.search} />
+            : <h1>Trends/Last Seen</h1>
+          }
+        </div>
+        <div>
           {this.state.search !== '' && this.state.nameMovie !== ''
-            ? <MovieList nameMovie={this.state.search} />
+            ? <MovieList
+              nameMovie={this.state.search}
+              filterEnabled={false}
+            />
             : <></>
           }
         </div>

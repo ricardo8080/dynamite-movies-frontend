@@ -9,18 +9,31 @@ const MovieList = (props) => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     const retrieveData = async () => {
-      try {
-        console.log(props.nameMovie);
-        const { data } = await axios.get(
-          "http://localhost:5000/movie/search-results",
-          { "headers": { "nameMovie": props.nameMovie } }
-        );
-        // const { data } = await axios.get("https://dynamite--movies-app.herokuapp.com/movie/search-results");
-        setMovies(data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
+      if (props.filterEnable) {
+        try {
+          const { data } = await axios.get(
+            "http://localhost:5000/movie/movies"
+            // ,
+            // { "headers": { "nameMovie": props.nameMovie } }
+          );
+          // const { data } = await axios.get("https://dynamite--movies-app.herokuapp.com/movie/search-results");
+          setMovies(data);
+        } catch (err) {
+          console.log(err);
+        }
+      } else {
+        try {
+          const { data } = await axios.get(
+            "http://localhost:5000/movie/search-results",
+            { "headers": { "nameMovie": props.nameMovie } }
+          );
+          // const { data } = await axios.get("https://dynamite--movies-app.herokuapp.com/movie/search-results");
+          setMovies(data);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+    }
     retrieveData().catch(null);
     return () => {
       setMovies([]);
