@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Logo from "../assets/images/logo.png";
-// import { AuthButton } from "../AuthenthicationFiles/authFiles";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
 import { Image, Navbar, Nav } from "react-bootstrap";
@@ -54,7 +53,6 @@ class PersonalizedNavBar extends Component {
           <Nav className="mr-auto" style={{ marginLeft: "3%" }}>
             <Nav.Link href="/">Log out</Nav.Link>
           </Nav>
-          {/* <AuthButton /> */}
         </Navbar>
       </div >
     );

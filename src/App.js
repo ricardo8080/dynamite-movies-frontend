@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import DetailedFormPage from './pages/detailedForm';
 import ForgotPasswordPage from './pages/forgotPassword';
 import LoginPage from "./pages/loginPage";
 import MainPage from './pages/mainpage';
@@ -27,9 +26,6 @@ function App() {
             <Route exact path="/signin">
               <LoginPage />
             </Route>
-            <PrivateRoute exact path="/DetailedFormPage">
-              <DetailedFormPage />
-            </PrivateRoute>
             <PrivateRoute exact path="/mainPage/:username">
               <MainPage />
             </PrivateRoute>
