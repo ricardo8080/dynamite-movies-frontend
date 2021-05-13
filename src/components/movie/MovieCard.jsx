@@ -22,9 +22,7 @@ class MovieCard extends Component {
   showGenres(list) {
     let text = "";
     list.forEach((genre) => {
-      genre !== list[list.length - 1]
-        ? text += `${genre}, `
-        : text += `${genre}`;
+      (genre !== list[list.length - 1]) ? text += `${genre}, ` : text += `${genre}`;
     });
     return text;
   }

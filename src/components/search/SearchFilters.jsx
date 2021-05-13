@@ -26,7 +26,7 @@ class SearchForm extends Component {
   }
   changeRadioButtons(event) {
     this.setState({ rb: event.target.id });
-    let newDate;
+    let newDate = '';
     switch (event.target.id) {
       case "Today":
         newDate = moment(new Date().toISOString().toString().split('T')[0]).format('YYYY-MM-DD');
@@ -43,11 +43,11 @@ class SearchForm extends Component {
       case "All":
         newDate = "1940-01-01";
         break;
+      default:
     }
     this.setState({
       dateFrom: moment(newDate).format('YYYY-MM-DD'),
     });
-
   }
   render() {
     const optionsForCountries = ["", "China", "India", "Indonesia", "Japan", "Korea", "Turkey", "United Kingdom", "United States"];
