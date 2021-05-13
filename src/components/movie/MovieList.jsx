@@ -9,7 +9,7 @@ const MovieList = (props) => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     const retrieveData = async () => {
-      console.log(props)
+      console.log(props);
       if (props.filterEnabled) {
         try {
           const { data } = await axios.get(
@@ -33,14 +33,14 @@ const MovieList = (props) => {
         } catch (err) {
           console.log(err);
         }
-      };
-    }
+      }
+    };
     retrieveData().catch(null);
     return () => {
       setMovies([]);
     };
   },
-    [props.nameMovie, props.country, props.genres, props.dateTo, props.dateFrom]
+    [props]
   );
   return (
     <Container>
