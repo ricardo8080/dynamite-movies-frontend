@@ -17,7 +17,6 @@ class MovieCard extends Component {
   show(event) {
     event.preventDefault();
     this.setState({ showDetails: !this.state.showDetails });
-    this.changeLastSeen().catch(null);
   }
 
   async changeLastSeen() {
