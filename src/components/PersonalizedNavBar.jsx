@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Logo from "../assets/images/logo.png";
+import Logo from "../assets/images/logoLogin.png";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
 import { Image, Navbar, Nav } from "react-bootstrap";
@@ -23,7 +23,6 @@ class PersonalizedNavBar extends Component {
       );
       this.setState({ account: data[0] });
       this.setState({ hashUrl: `https://www.gravatar.com/avatar/${md5(this.state.account.email)}?d=${this.state.defaultProfile}` });
-      console.log(this.state.account);
     } catch (err) {
       console.log(err);
     }
@@ -36,10 +35,11 @@ class PersonalizedNavBar extends Component {
             <Image
               src={Logo}
               className="navbar-image"
+              roundedCircle
             ></Image>
             {' '} Dynamite Movies
           </Navbar.Brand>
-          <div style={{ marginLeft: "60%" }}>
+          <div style={{ marginLeft: "70%" }}>
             <Nav className="mr-auto">
               <Image
                 className="navbar-image"
