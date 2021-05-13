@@ -9,7 +9,6 @@ const MovieList = (props) => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     const retrieveData = async () => {
-      console.log(props)
       if (props.filterEnabled) {
         try {
           const { data } = await axios.get(
@@ -17,9 +16,7 @@ const MovieList = (props) => {
             { "headers": { "nameMovie": props.nameMovie, "country": props.country, "genres": props.genres } }
           );
           // const { data } = await axios.get("https://dynamite--movies-app.herokuapp.com/movie/search-results/filter");
-
           setMovies(data);
-          console.log(data);
         } catch (err) {
           console.log(err);
         }

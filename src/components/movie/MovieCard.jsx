@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 import { Card } from "react-bootstrap";
 import ImageMovie from "../../assets/images/default.png";
 import moment from 'moment';
+import axios from "axios";
 import "../style.css";
+import { withRouter } from "react-router";
 class MovieCard extends Component {
   constructor(props) {
     super(props);
@@ -15,6 +17,17 @@ class MovieCard extends Component {
   show(event) {
     event.preventDefault();
     this.setState({ showDetails: !this.state.showDetails });
+    this.changeLastSeen().catch(null);
+  }
+
+  async changeLastSeen() {
+    try {
+      await axios.put("http://localhost:5000/account/Change-Last-Seen",
+        { "headers": { "username": this.props.match.params.username, "nameMovie": this.props.movie.nameMovie } }
+      );
+    } catch (err) {
+      console.log(err);
+    }
   }
   changeDateFormat(date) {
     return moment(date.toString().split('T')[0]).format('MMMM Do, YYYY');
@@ -75,4 +88,4 @@ MovieCard.defaultProps = {
     description: "none",
   },
 };
-export default MovieCard;
+export default withRouter(MovieCard);
