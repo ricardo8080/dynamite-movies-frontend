@@ -60,7 +60,12 @@ export const ForgotPassword = () => {
 
     if (username !== "" && newPassword !== "" && newPasswordConfirm !== "" && question !== "" && answer !== "") {
       if (newPassword === newPasswordConfirm) {
-        updatePassword();
+        if (newPassword.length >= 8) {
+          updatePassword();
+        } else {
+          setMessage("Password must be more than 8 characters");
+          setAlert(true);
+        }
       } else {
         setMessage("Password and confirm password don't match");
         setAlert(true);

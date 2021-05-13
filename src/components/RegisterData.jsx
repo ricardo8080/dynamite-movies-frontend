@@ -60,7 +60,6 @@ class RegisterData extends Component {
         email: this.state.email
       };
 
-      if (user.age >= 13 && user.age <= 150) {
 
         await axios.post(`http://localhost:5000/account/Register`, user, {
           headers: { "Content-Type": "application/json" }
@@ -71,10 +70,6 @@ class RegisterData extends Component {
         });
 
         window.location.replace("/");
-      } else {
-        this.setState({ alert: true, message: "You must be over 13 years old, Sorry :(" });
-      }
-
     } catch (err) {
       console.log(err);
     }
@@ -91,8 +86,19 @@ class RegisterData extends Component {
 
     if (this.validationInputs()) {
       if (this.state.password === this.state.confirmPassword) {
-
-        this.postAccount();
+        if (this.state.password.length >= 8) {
+          if(this.getAge(this.state.birthday) >= 13 && this.getAge(this.state.birthday) <= 150) {
+            if (/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i.test(this.state.email)) {
+              this.postAccount();
+            } else {
+              this.setState({ alert: true, message: "Gmail is incorrect" });
+            }
+          } else {
+            this.setState({ alert: true, message: "You must be over 13 years old, Sorry :(" });
+          }
+        } else {
+          this.setState({ alert: true, message: "Password must be more than 8 characters" });
+        }
       } else {
         this.setState({ alert: true, message: "Password and confirm password don't match" });
       }
