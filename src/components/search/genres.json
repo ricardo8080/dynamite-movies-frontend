@@ -1,0 +1,18 @@
+[
+  { "value": "Action", "label": "Action" },
+  { "value": "Adventure", "label": "Adventure" },
+  { "value": "Animation", "label": "Animation" },
+  { "value": "Biography", "label": "Biography" },
+  { "value": "Comedy", "label": "Comedy" },
+  { "value": "Crime", "label": "Crime" },
+  { "value": "Documental", "label": "Documental" },
+  { "value": "Drama", "label": "Drama" },
+  { "value": "Fantasy", "label": "Fantasy" },
+  { "value": "Horror", "label": "Horror" },
+  { "value": "Musical", "label": "Musical" },
+  { "value": "Romance", "label": "Romance" },  
+  { "value": "Sci-Fi", "label": "Sci-Fi" },  
+  { "value": "Sport", "label": "Sport" },  
+  { "value": "Suspense", "label": "Suspense" },
+  { "value": "Thriller", "label": "Thriller" }
+]

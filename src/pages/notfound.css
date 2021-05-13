@@ -1,0 +1,18 @@
+.notFoundContainer{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: #c4bbf0;;
+}
+
+.notFoundContainer h1{
+    font-size: 160px;
+    margin: 0;
+    font-weight: 900;
+    letter-spacing: 20px;
+    background-image: linear-gradient(180deg,#4f3b78, #c4bbf0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
