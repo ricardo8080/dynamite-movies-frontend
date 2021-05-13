@@ -1,14 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import DetailedFormPage from './pages/detailedForm';
 import ForgotPasswordPage from './pages/forgotPassword';
 import LoginPage from "./pages/loginPage";
 import MainPage from './pages/mainpage';
 import NotFoundPage from './pages/notfound';
 import RegisterPage from './pages/register';
-import SearchResultsPage from './pages/searchResults';
-import { ProvideAuth , PrivateRoute } from './AuthenthicationFiles/authFiles'
+import { ProvideAuth, PrivateRoute } from './AuthenthicationFiles/authFiles';
 
 function App() {
   return (
@@ -28,12 +26,6 @@ function App() {
             <Route exact path="/signin">
               <LoginPage />
             </Route>
-            <PrivateRoute exact path="/SearchResultsPage">
-              <SearchResultsPage />
-            </PrivateRoute>
-            <PrivateRoute exact path="/DetailedFormPage">
-              <DetailedFormPage />
-            </PrivateRoute>
             <PrivateRoute exact path="/mainPage/:username">
               <MainPage />
             </PrivateRoute>
