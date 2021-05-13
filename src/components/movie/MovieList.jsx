@@ -9,25 +9,27 @@ const MovieList = (props) => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     const retrieveData = async () => {
-      console.log(props);
+      console.log(props)
       if (props.filterEnabled) {
         try {
           const { data } = await axios.get(
-            "http://localhost:5000/movie/movies"
-            // "http://localhost:5000/movie/search-results/filter",
-            // { "headers": { "nameMovie": props.nameMovie, "country": props.country, "genres": "Action" } }
+            "http://localhost:5000/movie/search-results/filter",
+            { "headers": { "nameMovie": props.nameMovie, "country": props.country, "genres": props.genres } }
           );
           // const { data } = await axios.get("https://dynamite--movies-app.herokuapp.com/movie/search-results/filter");
+
           setMovies(data);
+          console.log(data);
         } catch (err) {
           console.log(err);
         }
       } else {
         try {
-          const { data } = await axios.get(
-            "http://localhost:5000/movie/search-results",
-            { "headers": { "nameMovie": props.nameMovie } }
-          );
+          const {
+            data,
+          } = await axios.get("http://localhost:5000/movie/search-results", {
+            headers: { nameMovie: props.nameMovie },
+          });
           // const { data } = await axios.get("https://dynamite--movies-app.herokuapp.com/movie/search-results");
           setMovies(data);
         } catch (err) {
@@ -39,9 +41,7 @@ const MovieList = (props) => {
     return () => {
       setMovies([]);
     };
-  },
-    [props]
-  );
+  }, [props]);
   return (
     <Container>
       <Row>
@@ -53,8 +53,8 @@ const MovieList = (props) => {
       </Row>
     </Container>
   );
-}
+};
 MovieList.propTypes = {
-  nameMovie: PropTypes.string.isRequired
+  nameMovie: PropTypes.string.isRequired,
 };
 export default MovieList;

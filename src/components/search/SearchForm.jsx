@@ -3,14 +3,14 @@ import { Form, Col, Row, Button } from "react-bootstrap";
 import SearchFilters from "../search/SearchFilters";
 import MovieList from "../movie/MovieList";
 import "../style.css";
-import 'font-awesome/css/font-awesome.min.css';
+import "font-awesome/css/font-awesome.min.css";
 class SearchForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       filterEnabledButton: false,
-      nameMovie: '',
-      search: '',
+      nameMovie: "",
+      search: "",
     };
     this.openFilterOptions = this.openFilterOptions.bind(this);
     this.searchMovie = this.searchMovie.bind(this);
@@ -36,10 +36,13 @@ class SearchForm extends Component {
                 <Col sm={8}>
                   <Form.Control
                     value={this.state.nameMovie}
-                    onChange={(event) => this.setState({ nameMovie: event.target.value })}
+                    onChange={(event) =>
+                      this.setState({ nameMovie: event.target.value })
+                    }
                     className="input search-form--form-control"
                     placeholder="Search..."
-                    autoComplete="off" />
+                    autoComplete="off"
+                  />
                 </Col>
                 <Col sm={2}>
                   <button
@@ -47,38 +50,48 @@ class SearchForm extends Component {
                     className="btn search-form--button"
                     onClick={(event) => this.searchMovie(event)}
                   >
-                    Search
-                  {' '}
-                    <i className="fa fa-search" aria-hidden="false" />
+                    Search <i className="fa fa-search" aria-hidden="false" />
                   </button>
                 </Col>
               </Row>
             </Form.Group>
-            <div style={{ color: "#4f3b78", margin: "10px" }} onClick={() => this.openFilterOptions()}>
-              <Button className="showFilters" variant="dark" style={{ backgroundColor: "#4f3b78" }}>
+            <div
+              style={{ color: "#4f3b78", margin: "10px" }}
+              onClick={() => this.openFilterOptions()}
+            >
+              <Button
+                className="showFilters"
+                variant="dark"
+                style={{ backgroundColor: "#4f3b78" }}
+              >
+                {this.state.filterEnabledButton ? (
+                  <i
+                    className="fa fa-chevron-circle-down"
+                    aria-hidden="false"
+                  />
+                ) : (
+                  <i className="fa fa-chevron-circle-up" aria-hidden="false" />
+                )}
                 {this.state.filterEnabledButton
-                  ? <i className="fa fa-chevron-circle-down" aria-hidden="false" />
-                  : <i className="fa fa-chevron-circle-up" aria-hidden="false" />
-                }
-                {this.state.filterEnabledButton ? " Search with Filters " : " Show Trends/Last Seen "}
+                  ? " Search with Filters "
+                  : " Show Trends/Last Seen "}
               </Button>
             </div>
           </Form>
         </div>
         <div>
-          {this.state.filterEnabledButton
-            ? < SearchFilters nameMovie={this.state.search} />
-            : <h1>Trends/Last Seen</h1>
-          }
-        </div>
-        <div>
-          {this.state.search !== '' && this.state.nameMovie !== ''
-            ? <MovieList
-              nameMovie={this.state.search}
-              filterEnabled={false}
-            />
-            : <></>
-          }
+          {this.state.filterEnabledButton ? (
+            <SearchFilters nameMovie={this.state.search} />
+          ) : (
+            <>
+              {this.state.search !== "" && this.state.nameMovie !== "" ? (
+                <MovieList nameMovie={this.state.search} filterEnabled={false} />
+              ) : (
+                <></>
+              )}
+              <h1>Trends/Last Seen</h1>
+            </>
+          )}
         </div>
       </div>
     );
