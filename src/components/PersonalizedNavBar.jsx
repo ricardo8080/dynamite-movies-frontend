@@ -12,7 +12,6 @@ class PersonalizedNavBar extends Component {
       account: {},
       hashUrl: '',
       defaultProfile: 'https://www.gravatar.com/avatar/a8df5423f56ac1c628d54ee04ea44a64',
-      defaultPath: `/mainPage/${this, props.match.params.username}`
     };
   }
   async componentDidMount() {
@@ -33,7 +32,7 @@ class PersonalizedNavBar extends Component {
     return (
       <div>
         <Navbar className="navbar" variant="dark">
-          <Navbar.Brand href={this.state.defaultPath}>
+          <Navbar.Brand>
             <Image
               src={Logo}
               className="navbar-image"
