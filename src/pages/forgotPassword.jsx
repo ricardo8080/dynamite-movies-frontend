@@ -49,8 +49,6 @@ export const ForgotPassword = () => {
       console.log(err);
     }
   };
-
-
   let handleSubmit = (e) => {
     const form = e.currentTarget;
     e.preventDefault();
