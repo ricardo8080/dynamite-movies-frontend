@@ -72,9 +72,7 @@ class SearchForm extends Component {
                 ) : (
                   <i className="fa fa-chevron-circle-up" aria-hidden="false" />
                 )}
-                {this.state.filterEnabledButton
-                  ? " Search with Filters "
-                  : " Show Trends/Last Seen "}
+                {" Search with Filters "}
               </Button>
             </div>
           </Form>
@@ -89,7 +87,6 @@ class SearchForm extends Component {
               ) : (
                 <></>
               )}
-              <h1>Trends/Last Seen</h1>
             </>
           )}
         </div>

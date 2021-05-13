@@ -15,7 +15,6 @@ const MovieList = (props) => {
             "http://localhost:5000/movie/search-results/filter",
             { "headers": { "nameMovie": props.nameMovie, "country": props.country, "genres": props.genres } }
           );
-          // const { data } = await axios.get("https://dynamite--movies-app.herokuapp.com/movie/search-results/filter");
           setMovies(data);
         } catch (err) {
           console.log(err);
@@ -27,7 +26,6 @@ const MovieList = (props) => {
           } = await axios.get("http://localhost:5000/movie/search-results", {
             headers: { nameMovie: props.nameMovie },
           });
-          // const { data } = await axios.get("https://dynamite--movies-app.herokuapp.com/movie/search-results");
           setMovies(data);
         } catch (err) {
           console.log(err);
