@@ -19,6 +19,7 @@ export const ForgotPassword = () => {
   const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
   const [alert, setAlert] = useState(false);
   const [message, setMessage] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const updatePassword = async () => {
     try {
@@ -35,6 +36,13 @@ export const ForgotPassword = () => {
 
       ).then(res => {
         console.log(res);
+        if (res.data === "") {
+          setMessage("Username, question or answer is incorrect");
+          setAlert(true);
+        } else {
+          setSuccess(true);
+          //window.location.replace("/");
+        }
       });
 
     } catch (err) {
@@ -55,7 +63,6 @@ export const ForgotPassword = () => {
     if (username !== "" && newPassword !== "" && newPasswordConfirm !== "" && question !== "" && answer !== "") {
       if (newPassword === newPasswordConfirm) {
         updatePassword();
-        //window.location.replace("/");
       } else {
         setMessage("Password and confirm password don't match");
         setAlert(true);
@@ -74,6 +81,9 @@ export const ForgotPassword = () => {
           <Col>
             <Toast className="alertForgotPassword" onClose={() => setAlert(false)} show={alert} delay={3000} autohide>
               <Toast.Body>{message}</Toast.Body>
+            </Toast>
+            <Toast className="alertSuccess" onClose={() => setSuccess(false)} show={success} delay={3000} autohide>
+              <Toast.Body>Password changed successfully!</Toast.Body>
             </Toast>
           </Col>
         </Row>

@@ -136,6 +136,12 @@
     width: 100%;
     margin-right: 10px;
   }
+  .alertSuccess {
+    background-color: rgb(90, 190, 90);
+    color: white;
+    width: 100%;
+    margin-right: 10px;
+  }
    /*
     #c4bbf0 mas claro
     #927fbf
