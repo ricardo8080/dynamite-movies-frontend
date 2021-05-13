@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import ShowFilters from './showFilters';
 
 export const FilterPage = () => {
-    const [showFilterWords,setShowFiltersWords] = useState("Show Trends/Last Seen");
+    const [showFilterWords,setShowFiltersWords] = useState("Search with Filters");
     const openFilterOptions = () => {
         setShowFiltersWords((value) => ( value !== "Search with Filters"
                         ? "Search with Filters"
@@ -28,6 +28,7 @@ export const FilterPage = () => {
     return showFilterWords === "Search with Filters" ? (
         <div>
             <FilterButton />
+            
         </div>
     ) : (
         <div>
