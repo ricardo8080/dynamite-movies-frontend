@@ -97,7 +97,7 @@ class RegisterData extends Component {
            
               this.postAccount();
           }  else {
-            this.setState({alert: true, message: "Password and confirm password do not match"});
+            this.setState({alert: true, message: "Password and confirm password don't match"});
           }
         } else {
             this.setState({alert: true, message: "All fields are required"});
@@ -166,7 +166,7 @@ class RegisterData extends Component {
       return (
         <Container className="centerForm">
         <Form className="backgroundForm" noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
-            <Row className="marginTop">
+            <Row className="marginTitle">
                 <Col className="marginArrow"><Link to="/" ><BiArrowBack className="link-back" /></Link></Col>
                 <Col><h1>Sign Up</h1></Col> 
                 <Col>

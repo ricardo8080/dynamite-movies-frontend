@@ -1,6 +1,6 @@
 /*index.jsx*/
 import React, {useState} from "react";
-import { Container, Form, Col, Row, Button} from "react-bootstrap";
+import { Container, Form, Col, Row, Button, Toast} from "react-bootstrap";
 import "./loginPage.css"
 import questions from "../mockQuestion.json"
 import { BsFillQuestionCircleFill } from "react-icons/bs";
@@ -18,7 +18,8 @@ export const ForgotPassword = () => {
     const [username, setUsername] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [newPasswordConfirm, setNewPasswordConfirm ] = useState("");
-
+    const [alert, setAlert] = useState(false);
+    const [message, setMessage] = useState("");
     
     const updatePassword = async () => {
         try {
@@ -30,7 +31,7 @@ export const ForgotPassword = () => {
              }
      
             await axios.put( "http://localhost:5000/account/Forgot-Password", user, { 
-               headers: { "Content-Type": "application/json", "username":"ss" } }
+               headers: { "Content-Type": "application/json" } }
      
              ).then(res => {
                console.log(res);
@@ -53,19 +54,28 @@ export const ForgotPassword = () => {
 
        if(username !== "" && newPassword !== "" && newPasswordConfirm !== "" && question !== "" && answer !== "") {
            if (newPassword === newPasswordConfirm ) {
-            updatePassword();
-            window.location.replace("/");
+              updatePassword();
+              //window.location.replace("/");
            } else {
-               console.log("incorrect password");
+              setMessage("Password and confirm password don't match");
+              setAlert(true);
            }
+       } else {
+         setMessage("All fields are required");
+         setAlert(true);
        }
     }
     return (
         <Container className="centerForm">
         <Form className="backgroundForm" noValidate validated={validated}>
-            <Row className="marginTop">
-                <Col className="marginArrow" sm="2"><Link to="/" ><BiArrowBack className="link-back" /></Link></Col>
-                <Col sm="8"><h1 className="centerTitle">Forgot Password</h1></Col> 
+            <Row className="marginTitle">
+              <Col  className="marginArrow"><Link to="/" ><BiArrowBack className="link-back" /></Link></Col>
+              <Col sm="6"><h1 className="centerTitle">Forgot Password</h1></Col> 
+              <Col>
+                <Toast className="alertForgotPassword"  onClose={() => setAlert(false)} show={alert} delay={3000} autohide>
+                  <Toast.Body>{message}</Toast.Body>
+                </Toast>
+              </Col> 
             </Row>
             <Row className="margin">
               <Col className="divRegister">

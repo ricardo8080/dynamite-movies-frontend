@@ -57,7 +57,7 @@ export const LoginPage = () => {
         <Container >
             <Form className="centerForm" noValidate validated={validated}>
             <Row className="backgroundForm">
-                <Col  sm="4" className="divLogin">
+                <Col sm="4" className="divLogin">
                     <img src={logo} alt="Logo" />
                     <Toast className="alertLogin" onClose={() => setAlert(false)} show={alert} delay={3000} autohide>
                     <Toast.Body>Username or Password is incorrect</Toast.Body>
