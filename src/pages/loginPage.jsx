@@ -4,15 +4,17 @@ import { BsPeopleCircle } from "react-icons/bs";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { Link , useHistory } from "react-router-dom";
 import { useAuth } from '../AuthenthicationFiles/authFiles'
-import { Container, Col, Row, Form, Button   } from "react-bootstrap";
+import { Container, Col, Row, Form, Button, Toast } from "react-bootstrap";
 import logo from "../assets/images/logoLogin.png"
 import "./loginPage.css";
 import axios from "axios";
+
 
 export const LoginPage = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    const [alert, setAlert] = useState(false);
     const [validated, setValidated] = useState(false);
 
     let history = useHistory();
@@ -27,7 +29,7 @@ export const LoginPage = () => {
               login();
           } 
           else {
-              console.log("Incorrect password or username");
+            setAlert(true)
           }
         } catch (err) {
           console.log(err);
@@ -36,11 +38,9 @@ export const LoginPage = () => {
     
     let login = () => {
       auth.signin(() => {
-        //Login specifically to the mainPage instead of the page called.
         history.replace("/mainPage");
       });
     };
-    
 
     let handleSubmit = (e) =>  {
         const form = e.currentTarget;
@@ -54,16 +54,19 @@ export const LoginPage = () => {
         }
       }
     return (
-        <Container className="centerForm">
-            <Form noValidate validated={validated} onClick={handleSubmit} >
+        <Container >
+            <Form className="centerForm" noValidate validated={validated}>
             <Row className="backgroundForm">
-                <Col  sm="4" className="divLogin">
-                <img src={logo} alt="Logo" />
+                <Col sm="4" className="divLogin">
+                    <img src={logo} alt="Logo" />
+                    <Toast className="alertLogin" onClose={() => setAlert(false)} show={alert} delay={3000} autohide>
+                    <Toast.Body>Username or Password is incorrect</Toast.Body>
+                    </Toast>
                 </Col>
                 <Col  sm="5" className="divLogin">
                     <h1>Sign In</h1>
                     <Form.Group className="margin">
-                        <strong><Form.Label className="loginLabels">Username:</Form.Label></strong>
+                        <strong><Form.Label className="form-labels">Username:</Form.Label></strong>
                         <Form.Group className="input-group form-group">
                             <div>
                                 <span className="input-group-text"><i><BsPeopleCircle className="icon-color"/></i></span>
@@ -72,7 +75,7 @@ export const LoginPage = () => {
                             <Form.Control.Feedback type="invalid">Username required</Form.Control.Feedback>
                         </Form.Group>
                 
-                        <strong><Form.Label className="loginLabels">Password:</Form.Label></strong>
+                        <strong><Form.Label className="form-labels">Password:</Form.Label></strong>
                         <Form.Group className="input-group form-group">
                             <div>
                                 <span className="input-group-text"><i><RiLockPasswordFill className="icon-color"/></i></span>
@@ -82,13 +85,13 @@ export const LoginPage = () => {
                         </Form.Group>
                     </Form.Group>
                     <Form.Group className="d-flex justify-content-center links">
-                        <Button type="button" className="btn btn-login btn-lg">
+                        <Button type="button" className="btn btn-login btn-lg" onClick={handleSubmit}>
                             <strong>Login</strong>
                         </Button>
                     </Form.Group>
                     <Form.Group className="margin">
                         <strong>
-                            <div className="loginLabels d-flex justify-content-center" >Don't have an account?
+                            <div className="form-labels d-flex justify-content-center" >Don't have an account?
                                 <Link to="/signup" className="link-color" style={{ textDecoration: 'none' }}>
                                 Sign up
                                 </Link>
