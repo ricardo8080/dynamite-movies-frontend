@@ -23,7 +23,7 @@ export const LoginPage = () => {
                 { "headers": { "username": username, "password": password } });
 
             if (data.response === "True") {
-                login();
+                login(username);
             }
             else {
                 setAlert(true);
@@ -33,9 +33,9 @@ export const LoginPage = () => {
         }
     };
 
-    let login = () => {
+    let login = (username) => {
         auth.signin(() => {
-            history.replace("/mainPage");
+            history.replace(`/mainPage/${username}`);
         });
     };
 

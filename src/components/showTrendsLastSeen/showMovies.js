@@ -6,7 +6,7 @@ export const ShowMovies = () => {
     
     return (
         <div>
-          <MovieList />
+          <MovieList nameMovie=""/>
         </div>
       );
 };

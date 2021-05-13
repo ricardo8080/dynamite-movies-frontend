@@ -34,7 +34,7 @@ function App() {
             <PrivateRoute exact path="/DetailedFormPage">
               <DetailedFormPage />
             </PrivateRoute>
-            <PrivateRoute exact path="/mainPage">
+            <PrivateRoute exact path="/mainPage/:username">
               <MainPage />
             </PrivateRoute>
             <Route exact path="/*">
