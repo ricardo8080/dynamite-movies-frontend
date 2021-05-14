@@ -21,7 +21,7 @@ class MovieCard extends Component {
 
   async changeLastSeen() {
     try {
-      await axios.put("http://localhost:5000/account/Change-Last-Seen",
+      await axios.put("https://dynamite--movies-app.herokuapp.com/account/Change-Last-Seen",
         { "headers": { "username": this.props.match.params.username, "nameMovie": this.props.movie.nameMovie } }
       );
     } catch (err) {

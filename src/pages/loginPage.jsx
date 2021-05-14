@@ -19,7 +19,7 @@ export const LoginPage = () => {
 
     const getAccount = async () => {
         try {
-            const { data } = await axios.get("http://localhost:5000/account/Sign-In",
+            const { data } = await axios.get("https://dynamite--movies-app.herokuapp.com/account/Sign-In",
                 { "headers": { "username": username, "password": password } });
 
             if (data.response === "True") {

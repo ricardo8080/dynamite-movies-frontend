@@ -12,7 +12,7 @@ const MovieList = (props) => {
       if (props.filterEnabled) {
         try {
           const { data } = await axios.get(
-            "http://localhost:5000/movie/search-results/filter",
+            "https://dynamite--movies-app.herokuapp.com/movie/search-results/filter",
             { "headers": { "nameMovie": props.nameMovie, "country": props.country, "genres": props.genres } }
           );
           setMovies(data);
@@ -23,7 +23,7 @@ const MovieList = (props) => {
         try {
           const {
             data,
-          } = await axios.get("http://localhost:5000/movie/search-results", {
+          } = await axios.get("https://dynamite--movies-app.herokuapp.com/movie/search-results", {
             headers: { nameMovie: props.nameMovie },
           });
           setMovies(data);
