@@ -61,15 +61,15 @@ class RegisterData extends Component {
       };
 
 
-        await axios.post(`http://localhost:5000/account/Register`, user, {
-          headers: { "Content-Type": "application/json" }
-        }
+      await axios.post(`https://dynamite--movies-app.herokuapp.com/account/Register`, user, {
+        headers: { "Content-Type": "application/json" }
+      }
 
-        ).then(res => {
-          console.log(res);
-        });
+      ).then(res => {
+        console.log(res);
+      });
 
-        window.location.replace("/");
+      window.location.replace("/");
     } catch (err) {
       console.log(err);
     }
@@ -87,7 +87,7 @@ class RegisterData extends Component {
     if (this.validationInputs()) {
       if (this.state.password === this.state.confirmPassword) {
         if (this.state.password.length >= 8) {
-          if(this.getAge(this.state.birthday) >= 13 && this.getAge(this.state.birthday) <= 150) {
+          if (this.getAge(this.state.birthday) >= 13 && this.getAge(this.state.birthday) <= 150) {
             if (/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i.test(this.state.email)) {
               this.postAccount();
             } else {

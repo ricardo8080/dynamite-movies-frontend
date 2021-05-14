@@ -17,8 +17,7 @@ class PersonalizedNavBar extends Component {
   async componentDidMount() {
     try {
       const { data } = await axios.get(
-        "http://localhost:5000/account/account-information",
-        // "https://dynamite--movies-app.herokuapp.com/account/account-information"
+        " https://dynamite--movies-app.herokuapp.com/account/account-information",
         { "headers": { "username": this.props.match.params.username } }
       );
       this.setState({ account: data[0] });

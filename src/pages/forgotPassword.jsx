@@ -30,7 +30,7 @@ export const ForgotPassword = () => {
         securityAnswer: answer
       };
 
-      await axios.put("http://localhost:5000/account/Forgot-Password", user, {
+      await axios.put("https://dynamite--movies-app.herokuapp.com/account/Forgot-Password", user, {
         headers: { "Content-Type": "application/json" }
       }
 
